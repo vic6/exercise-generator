@@ -7,8 +7,6 @@ class AppContainer extends Component {
   state = { workout: [] };
 
   onExerciseSelect = event => {
-    console.log('AHHHHHHHHHHH!!!');
-    console.log(event.target.value);
     if (event.target.value === 'pull') {
       axios
         .all([
@@ -21,15 +19,22 @@ class AppContainer extends Component {
         ])
         .then(
           axios.spread((group1, group2, group3, group4, group5, group6) => {
-            let pullExercises = [
+            const backGroup = [
               ...group1.data.results,
               ...group2.data.results,
-              ...group3.data.results,
-              ...group4.data.results,
-              ...group5.data.results,
-              ...group6.data.results
+              ...group3.data.results
             ];
-            console.log(pullExercises);
+            const legGroup = [...group4.data.results];
+            const absGroup = [...group5.data.results, ...group6.data.results];
+            let pullExercises = [...backGroup, ...legGroup, ...absGroup];
+            // let pullExercises = [
+            //   ...group1.data.results,
+            //   ...group2.data.results,
+            //   ...group3.data.results,
+            //   ...group4.data.results,
+            //   ...group5.data.results,
+            //   ...group6.data.results
+            // ];
             pullExercises = JSON.stringify(pullExercises, null, 4);
             this.setState({
               workout: pullExercises
@@ -66,12 +71,20 @@ class AppContainer extends Component {
     }
   };
 
+  chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
+    const exercises = [];
+    while (exerciseGroup.length !== numberOfExercises) {
+      const exercise = exerciseGroup[Math.floor(Math.random() * exerciseGroup.length)];
+      if (!exercises.includes(exercise)) exercises.push(exercise);
+    }
+    return exercises;
+  };
+
   render() {
     return (
       <div>
         <App onExerciseSelect={this.onExerciseSelect} />
         <pre>{this.state.workout}</pre>
-
       </div>
     );
   }

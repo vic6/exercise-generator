@@ -1,9 +1,11 @@
 import React from 'react';
-import ExerciseList from './ExerciseList'
+import ExerciseListSelector from './ExerciseSelector'
+import ExerciseListContainer from './ExerciseListContainer/ExerciseListContainer'
 
-const App = () => (
+const App = (props) => (
   <div>
-    <ExerciseList />
+    <ExerciseListSelector onExerciseSelect={props.onExerciseSelect} />
+    <ExerciseListContainer />
   </div>
 )
 

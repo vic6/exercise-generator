@@ -26,15 +26,11 @@ class AppContainer extends Component {
             ];
             const legGroup = [...group4.data.results];
             const absGroup = [...group5.data.results, ...group6.data.results];
-            let pullExercises = [...backGroup, ...legGroup, ...absGroup];
-            // let pullExercises = [
-            //   ...group1.data.results,
-            //   ...group2.data.results,
-            //   ...group3.data.results,
-            //   ...group4.data.results,
-            //   ...group5.data.results,
-            //   ...group6.data.results
-            // ];
+            let pullExercises = [
+              ...this.chooseRandomExercise(backGroup, 2),
+              ...this.chooseRandomExercise(legGroup, 2),
+              ...this.chooseRandomExercise(absGroup, 1)
+            ];
             pullExercises = JSON.stringify(pullExercises, null, 4);
             this.setState({
               workout: pullExercises
@@ -53,15 +49,16 @@ class AppContainer extends Component {
         ])
         .then(
           axios.spread((group1, group2, group3, group4, group5, group6) => {
+            const chestGroup = [...group1.data.results];
+            const shoulderGroup = [...group2.data.results];
+            const legGroup = [...group3.data.results, ...group4.data.results];
+            const absGroup = [...group5.data.results, ...group6.data.results];
             let pushExercises = [
-              ...group1.data.results,
-              ...group2.data.results,
-              ...group3.data.results,
-              ...group4.data.results,
-              ...group5.data.results,
-              ...group6.data.results
+              ...this.chooseRandomExercise(chestGroup, 1),
+              ...this.chooseRandomExercise(shoulderGroup, 1),
+              ...this.chooseRandomExercise(legGroup, 2),
+              ...this.chooseRandomExercise(absGroup, 1)
             ];
-            console.log(pushExercises);
             pushExercises = JSON.stringify(pushExercises, null, 4);
             this.setState({
               workout: pushExercises
@@ -73,7 +70,7 @@ class AppContainer extends Component {
 
   chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
     const exercises = [];
-    while (exerciseGroup.length !== numberOfExercises) {
+    while (exercises.length !== numberOfExercises) {
       const exercise = exerciseGroup[Math.floor(Math.random() * exerciseGroup.length)];
       if (!exercises.includes(exercise)) exercises.push(exercise);
     }
@@ -83,7 +80,10 @@ class AppContainer extends Component {
   render() {
     return (
       <div>
-        <App onExerciseSelect={this.onExerciseSelect} />
+        <App
+          onExerciseSelect={this.onExerciseSelect}
+          exerciseList={this.state.workout}
+        />
         <pre>{this.state.workout}</pre>
       </div>
     );

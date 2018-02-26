@@ -71,7 +71,7 @@ class AppContainer extends Component {
   chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
     console.log('Exercise Group:', exerciseGroup);
     console.log('Num Ex:', numberOfExercises);
-    let ids = [];
+    const ids = [];
     const exercises = [];
     while (exercises.length !== numberOfExercises) {
       const exercise = exerciseGroup[Math.floor(Math.random() * exerciseGroup.length)];

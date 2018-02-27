@@ -7,8 +7,8 @@ export default class ExerciseTable extends Component {
   };
   render() {
     console.log('Exercise Table', this.props.exerciseList)
-    const [ ex1, ex2, ex3, ex4, ex5 ] = this.props.exerciseList
-    const [lower1, upper1, lower2, upper2] = this.props.exerciseSplit
+    const [ ex1, ex2, ex3, ex4 ] = this.props.exerciseList
+    // const [lower1, upper1, lower2, upper2] = this.props.exerciseSplit
 
     console.log('Exercise 1', this.props.exerciseList[0])
     return (

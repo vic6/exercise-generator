@@ -10,58 +10,51 @@ class AppContainer extends Component {
     if (event.target.value === 'pull') {
       axios
         .all([
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=4&language=2&limit=50`), // Chest
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=2&language=2&limit=50`), // Shoulders
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=8&language=2&limit=50`), // Knee Dom
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=11&language=2&limit=50`), // Knee Dom
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=10&language=2&limit=50`), // Hip Dom
           axios.get(`https://wger.de/api/v2/exercise/?muscles=12&language=2&limit=50`), // Back
           axios.get(`https://wger.de/api/v2/exercise/?muscles=3&language=2&limit=50`), // Back
           axios.get(`https://wger.de/api/v2/exercise/?muscles=9&language=2&limit=50`), // Back
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=11&language=2&limit=50`), // Legs
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=14&language=2&limit=50`), // Abs
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=6&language=2&limit=50`) // Abs
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=7&language=2&limit=50`), // calf
+          axios.get(`https://wger.de/api/v2/exercise/?muscles=15&language=2&limit=50`) // calf
         ])
         .then(
-          axios.spread((group1, group2, group3, group4, group5, group6) => {
-            const backGroup = [
-              ...group1.data.results,
-              ...group2.data.results,
-              ...group3.data.results
-            ];
-            const legGroup = group4.data.results;
-            const absGroup = [...group5.data.results, ...group6.data.results];
-            const pullExercises = [
-              ...this.chooseRandomExercise(backGroup, 2),
-              ...this.chooseRandomExercise(legGroup, 2),
-              ...this.chooseRandomExercise(absGroup, 1)
-            ];
+          axios.spread((group1, group2, group3, group4, group5, group6, group7, group8, group9, group10) => {
+            const horPush = group1.data.results;
+            const vertPush = group2.data.results;
+            const kneeDom = [...group3.data.results, ...group4.data.results];
+            const hipDom = group5.data.results;
+            const vertPull = group6.data.results;
+            const horPull = [...group7.data.results, ...group8.data.results];
+            const calf = [...group9.data.results, ...group10.data.results];
             // pullExercises = JSON.stringify(pullExercises, null, 4);
-            this.setState({
-              workout: pullExercises
-            });
-          })
-        );
-    } else if (event.target.value === 'push') {
-      axios
-        .all([
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=4&language=2&limit=50`), // Chest
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=2&language=2&limit=50`), // Shoulders
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=8&language=2&limit=50`), // Legs
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=10&language=2&limit=50`), // Legs
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=14&language=2&limit=50`), // Abs
-          axios.get(`https://wger.de/api/v2/exercise/?muscles=6&language=2&limit=50`) // Abs
-        ])
-        .then(
-          axios.spread((group1, group2, group3, group4, group5, group6) => {
-            const chestGroup = group1.data.results;
-            const shoulderGroup = group2.data.results;
-            const legGroup = [...group3.data.results, ...group4.data.results];
-            const absGroup = [...group5.data.results, ...group6.data.results];
-            const pushExercises = [
-              ...this.chooseRandomExercise(chestGroup, 1),
-              ...this.chooseRandomExercise(shoulderGroup, 1),
-              ...this.chooseRandomExercise(legGroup, 2),
-              ...this.chooseRandomExercise(absGroup, 1)
+            const day1 = [
+              ...this.chooseRandomExercise(kneeDom, 2),
+              ...this.chooseRandomExercise(hipDom, 1),
+              ...this.chooseRandomExercise(calf, 1)
             ];
-            // pushExercises = JSON.stringify(pushExercises, null, 4);
+            const day2 = [
+              ...this.chooseRandomExercise(horPush, 1),
+              ...this.chooseRandomExercise(horPull, 1),
+              ...this.chooseRandomExercise(vertPush, 1),
+              ...this.chooseRandomExercise(vertPull, 1)
+            ];
+            const day3 = [
+              ...this.chooseRandomExercise(kneeDom, 1),
+              ...this.chooseRandomExercise(hipDom, 2),
+              ...this.chooseRandomExercise(calf, 1)
+            ];
+            const day4 = [
+              ...this.chooseRandomExercise(horPush, 1),
+              ...this.chooseRandomExercise(horPull, 1),
+              ...this.chooseRandomExercise(vertPush, 1),
+              ...this.chooseRandomExercise(vertPull, 1)
+            ];
             this.setState({
-              workout: pushExercises
+              workout: [{day1: day1}, {day2: day2}, {day3: day3}, {day4: day4}]
             });
           })
         );
@@ -87,18 +80,6 @@ class AppContainer extends Component {
     }
     return exercises;
   };
-
-  // chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
-  //   console.log('Out of the Loop')
-  //   console.log('Number of Ex', numberOfExercises);
-  //   var count = 0;
-  //   while (count < numberOfExercises) {
-  //     console.log('In the loop');
-  //     console.log(count);
-  //     count += 1;
-  //   }
-  //   return 'Done';
-  // };
 
   render() {
     return (

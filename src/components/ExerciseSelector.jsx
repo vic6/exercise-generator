@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ExerciseTable from './ExerciseListContainer/ExerciseTable';
+// import ExerciseTable from './ExerciseListContainer/ExerciseTable';
 
 export default class ExerciseSelector extends Component {
   render() {

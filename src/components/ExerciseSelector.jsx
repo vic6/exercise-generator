@@ -10,7 +10,7 @@ export default class ExerciseSelector extends Component {
           <option value="push">Push Day</option>
           <option value="pull">Pull Day</option>
         </select>
-        <ExerciseTable />
+
       </div>
     );
   }

@@ -69,20 +69,20 @@ class AppContainer extends Component {
   };
 
   chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
-    console.log('Exercise Group:', exerciseGroup);
-    console.log('Num Ex:', numberOfExercises);
+    // console.log('Exercise Group:', exerciseGroup);
+    // console.log('Num Ex:', numberOfExercises);
     const ids = [];
     const exercises = [];
     while (exercises.length !== numberOfExercises) {
       const exercise = exerciseGroup[Math.floor(Math.random() * exerciseGroup.length)];
       if (!ids.includes(exercise.id)) {
-        console.log('New Exercise', exercise.id);
-        console.log(ids)
-        console.log('Is this id in the list?', ids.includes(exercise.id))
+        // console.log('New Exercise', exercise.id);
+        // console.log(ids)
+        // console.log('Is this id in the list?', ids.includes(exercise.id))
         exercises.push(exercise);
         ids.push(exercise.id);
       } else {
-        console.log('already in List', exercise.id)
+        // console.log('already in List', exercise.id)
       }
     }
     return exercises;

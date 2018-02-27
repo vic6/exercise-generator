@@ -4,13 +4,16 @@ import React, { Component } from 'react';
 export default class ExerciseSelector extends Component {
   render() {
     return (
-      <div className='col-xs-8'>
-        <select onChange={this.props.onExerciseSelect}>
-          <option>Select an Exercise Category</option>
-          <option value="push">Push Day</option>
-          <option value="pull">Pull Day</option>
-        </select>
-
+      <div className="row align-items-center justify-content-center">
+        {/* <select onChange={this.props.onExerciseSelect}>
+          <option>Generate workout</option>
+          <option value="generate">Generate</option>
+        </select> */}
+        <div className="col">
+          <button onClick={this.props.onExerciseSelect} className="btn btn-primary" type="button">
+            Generate Workout
+          </button>
+        </div>
       </div>
     );
   }

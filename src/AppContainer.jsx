@@ -6,8 +6,9 @@ import App from './components/App';
 class AppContainer extends Component {
   state = { workout: [] };
 
-  onExerciseSelect = event => {
-    if (event.target.value === 'pull') {
+  onExerciseSelect = (e) => {
+    e.preventDefault();
+    console.log('Sup dog');
       axios
         .all([
           axios.get(`https://wger.de/api/v2/exercise/?muscles=4&language=2&limit=50`), // Chest
@@ -54,11 +55,10 @@ class AppContainer extends Component {
               ...this.chooseRandomExercise(vertPull, 1)
             ];
             this.setState({
-              workout: [{day1: day1}, {day2: day2}, {day3: day3}, {day4: day4}]
+              workout: [{'Day 1 - Lower Body ': day1}, {'Day 2 - Upper Body': day2}, {'Day 3 - Lower Body': day3}, {'Day 4 - Upper Body': day4}]
             });
           })
         );
-    }
   };
 
   chooseRandomExercise = (exerciseGroup, numberOfExercises) => {

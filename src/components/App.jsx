@@ -6,7 +6,7 @@ import ExerciseListContainer from './ExerciseListContainer/ExerciseListContainer
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='container'>
         <Header />
         <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
         <ExerciseListContainer exerciseList={this.props.exerciseList}/>

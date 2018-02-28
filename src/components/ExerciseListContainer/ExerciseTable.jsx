@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 
 export default class ExerciseTable extends Component {
   // day, name
-  onClick = event => {
-    console.log(event);
+  logExercise() {
+    console.log('In the on click')
+    debugger;
   };
-  render() {
-    console.log('Exercise Table', this.props.exerciseList)
-    const [ ex1, ex2, ex3, ex4 ] = this.props.exerciseList[0]
-    // const [lower1, upper1, lower2, upper2] = this.props.exerciseSplit
 
-    console.log('Exercise 1', this.props.exerciseList[0])
+  render() {
+    // console.log('Exercise Table', this.props.exerciseList)
+    const [ ex1, ex2, ex3, ex4 ] = this.props.exerciseList[0]
+    // const clickCallback = () => this.logExercise();
+
+
+    // console.log('Exercise 1', this.props.exerciseList[0])
     return (
-      <table className="table table-bordered" >
-        <tbody>
+      <table  className="table table-bordered table-hover" >
+        <tbody >
           <tr>
             <th bgcolor="blue" text-align="center" colSpan="6">
               <font color="white">{this.props.name}</font>
@@ -27,8 +30,8 @@ export default class ExerciseTable extends Component {
             <th scope="col">RPE</th>
           </tr>
 
-          <tr>
-            <td value="knee-dominant">{ex1.name}</td>
+          <tr value={ex1} onClick={() => this.logExercise()}>
+            <td value={ex1}>{ex1.name}</td>
             <td>3</td>
             <td>8</td>
             <td>24</td>

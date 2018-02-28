@@ -6,8 +6,12 @@ import App from './components/App';
 class AppContainer extends Component {
   state = { workout: [] };
 
-  onExerciseSelect = (e) => {
-    e.preventDefault();
+  componentDidMount() {
+    this.onExerciseSelect();
+  }
+
+  onExerciseSelect = () => {
+    // e.preventDefault();
     console.log('Sup dog');
       axios
         .all([

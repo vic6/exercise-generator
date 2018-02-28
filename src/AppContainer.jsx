@@ -11,7 +11,6 @@ class AppContainer extends Component {
   }
 
   onExerciseSelect = () => {
-    // e.preventDefault();
     console.log('Sup dog');
       axios
         .all([

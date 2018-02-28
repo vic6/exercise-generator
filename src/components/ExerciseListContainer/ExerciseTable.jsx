@@ -2,18 +2,15 @@ import React, { Component } from 'react';
 
 export default class ExerciseTable extends Component {
   // day, name
-  logExercise() {
-    console.log('In the on click')
-    debugger;
+  getDescription = (exercise) => {
+    console.log(exercise.description)
   };
 
   render() {
     // console.log('Exercise Table', this.props.exerciseList)
     const [ ex1, ex2, ex3, ex4 ] = this.props.exerciseList[0]
-    // const clickCallback = () => this.logExercise();
+    // const clickCallback = () => this.getDescription(this.props.exerciseList);
 
-
-    // console.log('Exercise 1', this.props.exerciseList[0])
     return (
       <table  className="table table-bordered table-hover" >
         <tbody >
@@ -30,28 +27,28 @@ export default class ExerciseTable extends Component {
             <th scope="col">RPE</th>
           </tr>
 
-          <tr value={ex1} onClick={() => this.logExercise()}>
+          <tr id='1' onClick={() => this.getDescription(ex1)}>
             <td value={ex1}>{ex1.name}</td>
-            <td>3</td>
+            <td>Click this one</td>
             <td>8</td>
             <td>24</td>
             <td>8 to 9</td>
           </tr>
-          <tr>
+          <tr onClick={() => this.getDescription(ex2)}>
             <td>{ex2.name}</td>
             <td>3</td>
             <td>8</td>
             <td>24</td>
             <td>8 to 9</td>
           </tr>
-          <tr>
+          <tr onClick={() => this.getDescription(ex3)}>
             <td>{ex3.name}</td>
             <td>3</td>
             <td>8</td>
             <td>24</td>
             <td>8 to 9</td>
           </tr>
-          <tr>
+          <tr onClick={() => this.getDescription(ex4)}>
             <td>{ex4.name}</td>
             <td>3</td>
             <td>8</td>

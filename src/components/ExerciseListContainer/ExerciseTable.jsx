@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Popover, OverlayTrigger } from 'react-bootstrap';
+import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 export default class ExerciseTable extends Component {
   getDescription = exercise => (
@@ -25,6 +25,7 @@ export default class ExerciseTable extends Component {
             <th scope="col">Exercise</th>
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
+            <th scope="col">Generate new Exercise</th>
           </tr>
 
           <tr onClick={() => this.getDescription(ex1)}>
@@ -37,6 +38,7 @@ export default class ExerciseTable extends Component {
             </OverlayTrigger>
             <td>3</td>
             <td>8-12</td>
+            <td><Button>Regenerate</Button></td>
           </tr>
 
           <tr onClick={() => this.getDescription(ex2)}>

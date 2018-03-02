@@ -8,7 +8,10 @@ import ExerciseListContainer from './ExerciseListContainer/ExerciseListContainer
 // import TestComponent from './TestComponent';
 
 class App extends Component {
+
   render() {
+    const stuff = this.props;
+    debugger;
     return (
       <div>
 

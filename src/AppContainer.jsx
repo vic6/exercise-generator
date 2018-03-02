@@ -4,10 +4,11 @@ import axios from 'axios';
 import App from './components/App';
 
 class AppContainer extends Component {
-  state = { workout: [] };
+  state = { }
 
   componentDidMount() {
     this.onExerciseSelect();
+    console.log(this.state)
   }
 
   onExerciseSelect = () => {
@@ -33,33 +34,45 @@ class AppContainer extends Component {
             const vertPull = group6.data.results;
             const horPull = [...group7.data.results, ...group8.data.results];
             const calf = [...group9.data.results, ...group10.data.results];
-            // const exGroups = [horPush, vertPush, kneeDom, hipDom, vertPull, horPull, calf]
-            // pullExercises = JSON.stringify(pullExercises, null, 4);
-            const day1 = [
-              ...this.chooseRandomExercise(kneeDom, 2),
-              ...this.chooseRandomExercise(hipDom, 1),
-              ...this.chooseRandomExercise(calf, 1)
-            ];
-            const day2 = [
-              ...this.chooseRandomExercise(horPush, 1),
-              ...this.chooseRandomExercise(horPull, 1),
-              ...this.chooseRandomExercise(vertPush, 1),
-              ...this.chooseRandomExercise(vertPull, 1)
-            ];
-            const day3 = [
-              ...this.chooseRandomExercise(kneeDom, 1),
-              ...this.chooseRandomExercise(hipDom, 2),
-              ...this.chooseRandomExercise(calf, 1)
-            ];
-            const day4 = [
-              ...this.chooseRandomExercise(horPush, 1),
-              ...this.chooseRandomExercise(horPull, 1),
-              ...this.chooseRandomExercise(vertPush, 1),
-              ...this.chooseRandomExercise(vertPull, 1)
-            ];
+
             this.setState({
-              workout: [{'Day 1 - Lower Body ': day1}, {'Day 2 - Upper Body': day2}, {'Day 3 - Lower Body': day3}, {'Day 4 - Upper Body': day4}]
-            });
+              horPush,
+              vertPush,
+              kneeDom,
+              hipDom,
+              horPull,
+              vertPull,
+              calf
+            })
+
+            // const exGroups = [horPush, vertPush, kneeDom, hipDom, vertPull, horPull, calf]
+            // var state = JSON.stringify(pullExercises, null, 4);
+
+            // const day1 = [
+            //   ...this.chooseRandomExercise(kneeDom, 2),
+            //   ...this.chooseRandomExercise(hipDom, 1),
+            //   ...this.chooseRandomExercise(calf, 1)
+            // ];
+            // const day2 = [
+            //   ...this.chooseRandomExercise(horPush, 1),
+            //   ...this.chooseRandomExercise(horPull, 1),
+            //   ...this.chooseRandomExercise(vertPush, 1),
+            //   ...this.chooseRandomExercise(vertPull, 1)
+            // ];
+            // const day3 = [
+            //   ...this.chooseRandomExercise(kneeDom, 1),
+            //   ...this.chooseRandomExercise(hipDom, 2),
+            //   ...this.chooseRandomExercise(calf, 1)
+            // ];
+            // const day4 = [
+            //   ...this.chooseRandomExercise(horPush, 1),
+            //   ...this.chooseRandomExercise(horPull, 1),
+            //   ...this.chooseRandomExercise(vertPush, 1),
+            //   ...this.chooseRandomExercise(vertPull, 1)
+            // ];
+            // this.setState({
+            //   workout: [{'Day 1 - Lower Body ': day1}, {'Day 2 - Upper Body': day2}, {'Day 3 - Lower Body': day3}, {'Day 4 - Upper Body': day4}]
+            // });
           })
         );
   };
@@ -85,11 +98,15 @@ class AppContainer extends Component {
   };
 
   render() {
+    let exercises = this.state;
+    console.log(this.state);
+    console.log(exercises)
+    exercises = JSON.stringify(exercises, null, 4);
+
     return (
         <App
           onExerciseSelect={this.onExerciseSelect}
-          exerciseList={this.state.workout}
-          exerciseGroups={exGroups}
+          exerciseList={this.state}
         />
     );
   }

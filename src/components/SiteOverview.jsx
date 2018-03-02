@@ -28,7 +28,6 @@ export default class SiteOverview extends Component {
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Knee Dominant</Panel.Heading>
-            <Panel.Body>Knee dominant exercises involve the knees and hips. They mainly work the quadriceps and glutes.</Panel.Body>
             <ListGroup>
               <ListGroupItem>Squat</ListGroupItem>
               <ListGroupItem>Leg Extenstions</ListGroupItem>
@@ -39,9 +38,6 @@ export default class SiteOverview extends Component {
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Hip Dominant</Panel.Heading>
-            <Panel.Body>Hip dominant exercises mainly work the posterior chain consisting of muscles on the back of your body like hamstrings, glutes, and spinal erectors.
-
-</Panel.Body>
             <ListGroup>
               <ListGroupItem>Romanian Deadlift</ListGroupItem>
               <ListGroupItem>Leg Curls</ListGroupItem>
@@ -52,8 +48,6 @@ export default class SiteOverview extends Component {
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Horizontal Push</Panel.Heading>
-            <Panel.Body>This movement often consists of overhead movents. These exercises mainly target deltoids and triceps </Panel.Body>
-
             <ListGroup>
               <ListGroupItem>Dumbell Bench Press</ListGroupItem>
               <ListGroupItem>Push-ups</ListGroupItem>
@@ -64,8 +58,6 @@ export default class SiteOverview extends Component {
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Horizontal Pull</Panel.Heading>
-            <Panel.Body></Panel.Body>
-
             <ListGroup>
               <ListGroupItem>Seated Row</ListGroupItem>
               <ListGroupItem>Dumbell Row</ListGroupItem>
@@ -76,8 +68,6 @@ export default class SiteOverview extends Component {
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Vertical Push</Panel.Heading>
-            <Panel.Body></Panel.Body>
-
             <ListGroup>
               <ListGroupItem>Shoulder Press</ListGroupItem>
               <ListGroupItem>Lateral Raises</ListGroupItem>
@@ -88,7 +78,6 @@ export default class SiteOverview extends Component {
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Vertical Pull</Panel.Heading>
-            <Panel.Body></Panel.Body>
             <ListGroup>
               <ListGroupItem>Pullups</ListGroupItem>
               <ListGroupItem>Seated Lat Pulls</ListGroupItem>

@@ -33,6 +33,7 @@ class AppContainer extends Component {
             const vertPull = group6.data.results;
             const horPull = [...group7.data.results, ...group8.data.results];
             const calf = [...group9.data.results, ...group10.data.results];
+            // const exGroups = [horPush, vertPush, kneeDom, hipDom, vertPull, horPull, calf]
             // pullExercises = JSON.stringify(pullExercises, null, 4);
             const day1 = [
               ...this.chooseRandomExercise(kneeDom, 2),
@@ -88,6 +89,7 @@ class AppContainer extends Component {
         <App
           onExerciseSelect={this.onExerciseSelect}
           exerciseList={this.state.workout}
+          exerciseGroups={exGroups}
         />
     );
   }

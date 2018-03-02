@@ -89,7 +89,6 @@ class AppContainer extends Component {
         <App
           onExerciseSelect={this.onExerciseSelect}
           exerciseList={this.state.workout}
-          exerciseGroups={exGroups}
         />
     );
   }

@@ -11,7 +11,6 @@ class AppContainer extends Component {
   }
 
   onExerciseSelect = () => {
-    console.log('Sup dog');
       axios
         .all([
           axios.get(`https://wger.de/api/v2/exercise/?muscles=4&language=2&limit=50`), // Chest

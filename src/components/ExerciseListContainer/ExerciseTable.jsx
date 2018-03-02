@@ -1,248 +1,80 @@
 import React, { Component } from 'react';
+import { Popover, OverlayTrigger } from 'react-bootstrap';
 
 export default class ExerciseTable extends Component {
-  // day, name
-  getDescription = (exercise) => {
-    console.log(exercise.description)
-  };
+  getDescription = exercise => (
+    <Popover id="popover-trigger-click-root-close" title="Description">
+      <p dangerouslySetInnerHTML={{ __html: exercise.description }} />
+    </Popover>
+  );
 
   render() {
-    // console.log('Exercise Table', this.props.exerciseList)
-    const [ ex1, ex2, ex3, ex4 ] = this.props.exerciseList[0]
+    const [ex1, ex2, ex3, ex4] = this.props.exerciseList[0];
     // const clickCallback = () => this.getDescription(this.props.exerciseList);
 
     return (
-      <table  className="table table-bordered table-hover" >
-        <tbody >
+      <table className="table table-bordered table-hover">
+        <tbody>
           <tr>
-            <th bgcolor="blue" text-align="center" colSpan="6">
+            <th className='text-center' bgcolor="#0880e2" colSpan="6">
               <font color="white">{this.props.name}</font>
             </th>
           </tr>
+
           <tr>
             <th scope="col">Exercise</th>
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
-            <th scope="col">Rep Total</th>
-            <th scope="col">RPE</th>
           </tr>
 
-          <tr id='1' onClick={() => this.getDescription(ex1)}>
-            <td value={ex1}>{ex1.name}</td>
-            <td>Click this one</td>
-            <td>8</td>
-            <td>24</td>
-            <td>8 to 9</td>
-          </tr>
-          <tr onClick={() => this.getDescription(ex2)}>
-            <td>{ex2.name}</td>
+          <tr onClick={() => this.getDescription(ex1)}>
+            <OverlayTrigger
+              trigger="click"
+              rootClose
+              placement="bottom"
+              overlay={this.getDescription(ex1)}>
+              <td>{ex1.name}</td>
+            </OverlayTrigger>
             <td>3</td>
-            <td>8</td>
-            <td>24</td>
-            <td>8 to 9</td>
+            <td>8-12</td>
+          </tr>
+
+          <tr onClick={() => this.getDescription(ex2)}>
+            <OverlayTrigger
+              trigger="click"
+              rootClose
+              placement="bottom"
+              overlay={this.getDescription(ex2)}>
+              <td>{ex2.name}</td>
+            </OverlayTrigger>
+            <td>3</td>
+            <td>8-12</td>
           </tr>
           <tr onClick={() => this.getDescription(ex3)}>
-            <td>{ex3.name}</td>
+            <OverlayTrigger
+              trigger="click"
+              rootClose
+              placement="bottom"
+              overlay={this.getDescription(ex3)}>
+              <td>{ex3.name}</td>
+            </OverlayTrigger>
             <td>3</td>
-            <td>8</td>
-            <td>24</td>
-            <td>8 to 9</td>
+            <td>8-12</td>
           </tr>
+
           <tr onClick={() => this.getDescription(ex4)}>
-            <td>{ex4.name}</td>
+            <OverlayTrigger
+              trigger="click"
+              rootClose
+              placement="bottom"
+              overlay={this.getDescription(ex4)}>
+              <td>{ex4.name}</td>
+            </OverlayTrigger>
             <td>3</td>
-            <td>8</td>
-            <td>24</td>
-            <td>8 to 9</td>
+            <td>8-12</td>
           </tr>
         </tbody>
       </table>
     );
   }
 }
-
-// <div>
-//   <table className="table table-bordered">
-//     <tbody>
-//       <tr>
-//         <th bgcolor="blue" text-align="center" colSpan="6">
-//           <font color="white">Day 1 - Lower Body</font>
-//         </th>
-//       </tr>
-//       <tr>
-//         <th scope="col">Exercise</th>
-//         <th scope="col">Sets</th>
-//         <th scope="col">Reps</th>
-//         <th scope="col">Rep Total</th>
-//         <th scope="col">RPE</th>
-//       </tr>
-//
-//       <tr>
-//         <td value='knee-dominant'>Knee Dominant</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Hip Dominant</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Unilateral Knee Dominant</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Calf Exercise</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//     </tbody>
-//   </table>
-//
-//   <table className="table table-bordered">
-//     <tbody>
-//       <tr>
-//         <th bgcolor="blue" text-align="center" colSpan="6">
-//           <font color="white">Day 2 - Upper Body</font>
-//         </th>
-//       </tr>
-//       <tr>
-//         <th scope="col">Exercise</th>
-//         <th scope="col">Sets</th>
-//         <th scope="col">Reps</th>
-//         <th scope="col">Rep Total</th>
-//         <th scope="col">RPE</th>
-//       </tr>
-//
-//       <tr>
-//         <td>Horizontal Push</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Horizontal Pull</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Vertical Push</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Vertical Pull</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//     </tbody>
-//   </table>
-//
-//   <table className="table table-bordered">
-//     <tbody>
-//       <tr>
-//         <th bgcolor="blue" text-align="center" colSpan="6">
-//           <font color="white">Day 3 - Lower Body</font>
-//         </th>
-//       </tr>
-//       <tr>
-//         <th scope="col">Exercise</th>
-//         <th scope="col">Sets</th>
-//         <th scope="col">Reps</th>
-//         <th scope="col">Rep Total</th>
-//         <th scope="col">RPE</th>
-//       </tr>
-//
-//       <tr>
-//         <td>Knee Dominant</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Hip Dominant</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Unilateral Hip Dominant</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Calf Exercise</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//     </tbody>
-//   </table>
-//
-//   <table className="table table-bordered">
-//     <tbody>
-//       <tr>
-//         <th bgcolor="blue" text-align="center" colSpan="6">
-//           <font color="white">Day 4 - Upper Body</font>
-//         </th>
-//       </tr>
-//       <tr>
-//         <th scope="col">Exercise</th>
-//         <th scope="col">Sets</th>
-//         <th scope="col">Reps</th>
-//         <th scope="col">Rep Total</th>
-//         <th scope="col">RPE</th>
-//       </tr>
-//
-//       <tr>
-//         <td>Horizontal Push</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Horizontal Pull</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Vertical Push</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//       <tr>
-//         <td>Vertical Pull</td>
-//         <td>3</td>
-//         <td>8</td>
-//         <td>24</td>
-//         <td>8 to 9</td>
-//       </tr>
-//     </tbody>
-//   </table>
-// </div>

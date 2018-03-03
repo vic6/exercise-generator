@@ -77,20 +77,22 @@ class AppContainer extends Component {
         );
   };
 
-  // chooseRandomExercise = (exerciseCategory, numberOfExercises) => {
-  //   const exercises = [];
-  //   while (exercises.length !== numberOfExercises) {
-  //     const exerciseList = this.props.exerciseList[exerciseCategory]
-  //     const exercise = exerciseList[Math.floor(Math.random() * exerciseList.length)];
-  //     if (!exercises.includes(exercise)) {
-  //       exercises.push(exercise);
-  //       console.log('added new exercise', exercise)
-  //     } else {
-  //       console.log(exercise, 'already in List')
-  //     }
-  //   }
-  //   return exercises;
-  // };
+  chooseRandomExercise = (exerciseState, exerciseCategory, numberOfExercises) => {
+    if(Object.keys(exerciseState).length === 0) return null;
+    // console.log('In rando', Object.keys(exerciseState))
+    const exercises = [];
+    while (exercises.length !== numberOfExercises) {
+      const exerciseList = exerciseState[exerciseCategory]
+      const exercise = exerciseList[Math.floor(Math.random() * exerciseList.length)];
+      if (!exercises.includes(exercise)) {
+        exercises.push(exercise);
+        console.log('added new exercise', exercise)
+      } else {
+        console.log(exercise, 'already in List')
+      }
+    }
+    return exercises;
+  };
 
   // chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
   //   // console.log('Exercise Group:', exerciseGroup);
@@ -122,7 +124,7 @@ class AppContainer extends Component {
         <App
           onExerciseSelect={this.onExerciseSelect}
           exerciseList={this.state}
-          // chooseRandomExercise ={this.chooseRandomExercise}
+          chooseRandomExercise ={this.chooseRandomExercise}
         />
     );
   }

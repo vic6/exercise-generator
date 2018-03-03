@@ -9,36 +9,30 @@ import ExerciseListContainer from './ExerciseListContainer/ExerciseListContainer
 
 class App extends Component {
 
-  // chooseRandomExercise = (exerciseCategory, numberOfExercises) => {
-  //   const exercises = [];
-  //   while (exercises.length !== numberOfExercises) {
-  //     const exerciseList = this.props.exerciseList[exerciseCategory]
-  //     const exercise = exerciseList[Math.floor(Math.random() * exerciseList.length)];
-  //     if (!exercises.includes(exercise)) {
-  //       exercises.push(exercise);
-  //       console.log('added new exercise', exercise)
-  //     } else {
-  //       console.log(exercise, 'already in List')
-  //     }
-  //   }
-  //   return exercises;
-  // };
-
+  // componentDidMount() {
+  //   const result = this.props.chooseRandomExercise(this.props.exerciseList, 'kneeDom', 2);
+  // }
 
   render() {
-    const stuff = this.props.exerciseList
-    // const keys = Object.keys(stuff);
-    // console.log(why('kneeDom', 2));
+    // console.log('loop')
 
+    const state = this.props.exerciseList;
+    const random = this.props.chooseRandomExercise
+    const result = this.props.chooseRandomExercise(this.props.exerciseList, 'kneeDom', 2);
+    // console.log(result);
+    // console.log(random(state, 'kneeDom', 2));
     return (
       <div>
-        {'Hi dude'}
+        {result && <div>{result.length}</div>}
       <Header />
-      {/* <div className="container">
+      <div className="container">
         <SiteOverview />
         <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
-        <ExerciseListContainer exerciseList={this.props.exerciseList} />
-      </div> */}
+        <ExerciseListContainer
+          exerciseList={this.props.exerciseList}
+          chooseRandomExercise={this.props.chooseRandomExercise}
+        />
+      </div>
     </div>
     );
   }

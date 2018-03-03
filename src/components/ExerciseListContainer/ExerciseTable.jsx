@@ -12,72 +12,73 @@ export default class ExerciseTable extends Component {
     // const [ex1, ex2, ex3, ex4] = this.props.exerciseList[0];
     // const clickCallback = () => this.getDescription(this.props.exerciseList);
     const { kneeDom, hipDom, vertPull, vertPush, horPull, horPush, calf } = this.props.exerciseList;
-
+    // console.log('EXERCISE TABLE', this.props.exerciseList)
     return (
-      <table className="table table-bordered table-hover">
-        <tbody>
-          <tr>
-            <th className='text-center' bgcolor="#0880e2" colSpan="6">
-              <font color="white">{'this.props.name'}</font>
-            </th>
-          </tr>
-
-          <tr>
-            <th scope="col">Exercise</th>
-            <th scope="col">Sets</th>
-            <th scope="col">Reps</th>
-            <th scope="col">Generate new Exercise</th>
-          </tr>
-
-          <tr onClick={() => this.getDescription(ex1)}>
-            <OverlayTrigger
-              trigger="click"
-              rootClose
-              placement="bottom"
-              overlay={this.getDescription(ex1)}>
-              <td>{ex1.name}</td>
-            </OverlayTrigger>
-            <td>3</td>
-            <td>8-12</td>
-            <td><Button>Regenerate</Button></td>
-          </tr>
-
-          <tr onClick={() => this.getDescription(ex2)}>
-            <OverlayTrigger
-              trigger="click"
-              rootClose
-              placement="bottom"
-              overlay={this.getDescription(ex2)}>
-              <td>{ex2.name}</td>
-            </OverlayTrigger>
-            <td>3</td>
-            <td>8-12</td>
-          </tr>
-          <tr onClick={() => this.getDescription(ex3)}>
-            <OverlayTrigger
-              trigger="click"
-              rootClose
-              placement="bottom"
-              overlay={this.getDescription(ex3)}>
-              <td>{ex3.name}</td>
-            </OverlayTrigger>
-            <td>3</td>
-            <td>8-12</td>
-          </tr>
-
-          <tr onClick={() => this.getDescription(ex4)}>
-            <OverlayTrigger
-              trigger="click"
-              rootClose
-              placement="bottom"
-              overlay={this.getDescription(ex4)}>
-              <td>{ex4.name}</td>
-            </OverlayTrigger>
-            <td>3</td>
-            <td>8-12</td>
-          </tr>
-        </tbody>
-      </table>
+      'Sup Dog'
+      // <table className="table table-bordered table-hover">
+      //   <tbody>
+      //     <tr>
+      //       <th className='text-center' bgcolor="#0880e2" colSpan="6">
+      //         <font color="white">{'this.props.name'}</font>
+      //       </th>
+      //     </tr>
+      //
+      //     <tr>
+      //       <th scope="col">Exercise</th>
+      //       <th scope="col">Sets</th>
+      //       <th scope="col">Reps</th>
+      //       <th scope="col">Generate new Exercise</th>
+      //     </tr>
+      //
+      //     <tr onClick={() => this.getDescription(ex1)}>
+      //       <OverlayTrigger
+      //         trigger="click"
+      //         rootClose
+      //         placement="bottom"
+      //         overlay={this.getDescription(ex1)}>
+      //         <td>{ex1.name}</td>
+      //       </OverlayTrigger>
+      //       <td>3</td>
+      //       <td>8-12</td>
+      //       <td><Button>Regenerate</Button></td>
+      //     </tr>
+      //
+      //     <tr onClick={() => this.getDescription(ex2)}>
+      //       <OverlayTrigger
+      //         trigger="click"
+      //         rootClose
+      //         placement="bottom"
+      //         overlay={this.getDescription(ex2)}>
+      //         <td>{ex2.name}</td>
+      //       </OverlayTrigger>
+      //       <td>3</td>
+      //       <td>8-12</td>
+      //     </tr>
+      //     <tr onClick={() => this.getDescription(ex3)}>
+      //       <OverlayTrigger
+      //         trigger="click"
+      //         rootClose
+      //         placement="bottom"
+      //         overlay={this.getDescription(ex3)}>
+      //         <td>{ex3.name}</td>
+      //       </OverlayTrigger>
+      //       <td>3</td>
+      //       <td>8-12</td>
+      //     </tr>
+      //
+      //     <tr onClick={() => this.getDescription(ex4)}>
+      //       <OverlayTrigger
+      //         trigger="click"
+      //         rootClose
+      //         placement="bottom"
+      //         overlay={this.getDescription(ex4)}>
+      //         <td>{ex4.name}</td>
+      //       </OverlayTrigger>
+      //       <td>3</td>
+      //       <td>8-12</td>
+      //     </tr>
+      //   </tbody>
+      // </table>
     );
   }
 }

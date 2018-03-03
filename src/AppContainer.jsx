@@ -44,35 +44,9 @@ class AppContainer extends Component {
               vertPull,
               calf
             })
-
-            // const exGroups = [horPush, vertPush, kneeDom, hipDom, vertPull, horPull, calf]
-            // var state = JSON.stringify(pullExercises, null, 4);
-
-            // const day1 = [
-            //   ...this.chooseRandomExercise(kneeDom, 2),
-            //   ...this.chooseRandomExercise(hipDom, 1),
-            //   ...this.chooseRandomExercise(calf, 1)
-            // ];
-            // const day2 = [
-            //   ...this.chooseRandomExercise(horPush, 1),
-            //   ...this.chooseRandomExercise(horPull, 1),
-            //   ...this.chooseRandomExercise(vertPush, 1),
-            //   ...this.chooseRandomExercise(vertPull, 1)
-            // ];
-            // const day3 = [
-            //   ...this.chooseRandomExercise(kneeDom, 1),
-            //   ...this.chooseRandomExercise(hipDom, 2),
-            //   ...this.chooseRandomExercise(calf, 1)
-            // ];
-            // const day4 = [
-            //   ...this.chooseRandomExercise(horPush, 1),
-            //   ...this.chooseRandomExercise(horPull, 1),
-            //   ...this.chooseRandomExercise(vertPush, 1),
-            //   ...this.chooseRandomExercise(vertPull, 1)
-            // ];
-            // this.setState({
-            //   workout: [{'Day 1 - Lower Body ': day1}, {'Day 2 - Upper Body': day2}, {'Day 3 - Lower Body': day3}, {'Day 4 - Upper Body': day4}]
-            // });
+            .catch(( error ) => {
+              console.log(error)
+            })
           })
         );
   };

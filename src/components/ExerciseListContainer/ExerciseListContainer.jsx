@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-// import ExerciseList from './ExerciseList';
-import ExerciseTableList from './ExerciseTableList';
+// import ExerciseTableList from './ExerciseTableList';
+import ExerciseTable from './ExerciseTable';
 
 export default class ExerciseListContainer extends Component {
   render() {
+    console.log('In exerciselist container');
     const { exerciseList } = this.props;
     console.log('Exercise List', exerciseList)
     return (
       <div>
-        <ExerciseTableList exerciseList={exerciseList} />
+        <ExerciseTable exerciseList={this.props.exerciseList} />
+        {/* <ExerciseTableList exerciseList={exerciseList} /> */}
       </div>
     );
   }

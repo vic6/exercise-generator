@@ -9,15 +9,16 @@ export default class ExerciseTable extends Component {
   );
 
   render() {
-    const [ex1, ex2, ex3, ex4] = this.props.exerciseList[0];
+    // const [ex1, ex2, ex3, ex4] = this.props.exerciseList[0];
     // const clickCallback = () => this.getDescription(this.props.exerciseList);
+    const { kneeDom, hipDom, vertPull, vertPush, horPull, horPush, calf } = this.props.exerciseList;
 
     return (
       <table className="table table-bordered table-hover">
         <tbody>
           <tr>
             <th className='text-center' bgcolor="#0880e2" colSpan="6">
-              <font color="white">{this.props.name}</font>
+              <font color="white">{'this.props.name'}</font>
             </th>
           </tr>
 

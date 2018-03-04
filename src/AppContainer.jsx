@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Spinner from './components/Spinner'
 import axios from 'axios';
 import App from './components/App';
 
 class AppContainer extends Component {
-  state = { }
+  state = {}
 
   componentDidMount() {
     this.onExerciseSelect();
@@ -43,9 +44,6 @@ class AppContainer extends Component {
               horPull,
               vertPull,
               calf
-            })
-            .catch(( error ) => {
-              console.log(error)
             })
           })
         );

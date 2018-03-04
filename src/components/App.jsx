@@ -21,7 +21,10 @@ class App extends Component {
     // const state = this.props.exerciseList;
     // const random = this.props.chooseRandomExercise
     // const result = this.props.chooseRandomExercise(this.props.exerciseList.knee, 1);
-    const exercises = this.props.exerciseList.kneeDom
+    const exerciseList = this.props.exerciseList
+    const exercises = exerciseList.kneeDom;
+
+    // const exercises = [...exerciseList.kneeDom, ...exerciseList.hipDom, exerciseList.calf]
 
 
     // console.log(result);

@@ -28,15 +28,24 @@ export default class ExerciseTable extends Component {
     this.setState(ex1, ex2, ex3, ex4);
   }
 
-  logExercises = () => {
-    console.log('Hit it')
-    console.log('Ex props list', this.props.exerciseCategory)
+  logExercises = (event) => {
+    const exercise = event.target.id;
     if (this.props.exerciseCategory) {
+      console.log('Hit it')
       console.log('THIS', this)
-      this.setState({
-        ex1: this.props.chooseRandomExercise(this.props.exerciseCategory, 1)[0]
-      })
+      switch (exercise) {
+        case 'ex1':
+        this.setState({
+          ex1: this.props.chooseRandomExercise(this.props.exerciseCategory, 1)[0]
+        })
+        break;
+        default:
+        console.log('No exercises')
+      }
+
     }
+    // console.log('Ex props list', this.props.exerciseCategory)
+
     // if (this.props.exerciseCategory){
     //   console.log(this.props.exerciseCategory)
     // } else {
@@ -106,7 +115,7 @@ export default class ExerciseTable extends Component {
                 <th scope="col">Generate new Exercise</th>
               </tr>
 
-              <tr>
+              <tr id='ex1'>
                 <OverlayTrigger
                   trigger="click"
                   rootClose
@@ -117,7 +126,7 @@ export default class ExerciseTable extends Component {
                 <td>3</td>
                 <td>8-12</td>
                 <td>
-                  <Button onClick={this.logExercises}>Regenerate</Button>
+                  <Button id='ex1' onClick={this.logExercises}>Regenerate</Button>
                 </td>
               </tr>
             </tbody>

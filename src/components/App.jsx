@@ -34,7 +34,7 @@ class App extends Component {
         <SiteOverview />
         <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
         <ExerciseTable
-          exerciseCategory={exercises}
+          exerciseList={this.props.exerciseList}
           chooseRandomExercise={this.props.chooseRandomExercise}
          />
         {/* <ExerciseTableList /> */}

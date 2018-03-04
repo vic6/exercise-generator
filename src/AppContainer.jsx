@@ -49,13 +49,13 @@ class AppContainer extends Component {
         );
   };
 
-  chooseRandomExercise = (exerciseState, exerciseCategory, numberOfExercises) => {
+  chooseRandomExercise = (exerciseState, numberOfExercises) => {
+    console.log(exerciseState);
     if(Object.keys(exerciseState).length === 0) return null;
     // console.log('In rando', Object.keys(exerciseState))
     const exercises = [];
     while (exercises.length !== numberOfExercises) {
-      const exerciseList = exerciseState[exerciseCategory]
-      const exercise = exerciseList[Math.floor(Math.random() * exerciseList.length)];
+      const exercise = exerciseState[Math.floor(Math.random() * exerciseState.length)];
       if (!exercises.includes(exercise)) {
         exercises.push(exercise);
         console.log('added new exercise', exercise)
@@ -65,6 +65,24 @@ class AppContainer extends Component {
     }
     return exercises;
   };
+
+
+  // chooseRandomExercise = (exerciseState, exerciseCategory, numberOfExercises) => {
+  //   if(Object.keys(exerciseState).length === 0) return null;
+  //   // console.log('In rando', Object.keys(exerciseState))
+  //   const exercises = [];
+  //   while (exercises.length !== numberOfExercises) {
+  //     const exerciseList = exerciseState[exerciseCategory]
+  //     const exercise = exerciseList[Math.floor(Math.random() * exerciseList.length)];
+  //     if (!exercises.includes(exercise)) {
+  //       exercises.push(exercise);
+  //       console.log('added new exercise', exercise)
+  //     } else {
+  //       console.log(exercise, 'already in List')
+  //     }
+  //   }
+  //   return exercises;
+  // };
 
   // chooseRandomExercise = (exerciseGroup, numberOfExercises) => {
   //   // console.log('Exercise Group:', exerciseGroup);

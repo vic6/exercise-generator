@@ -4,28 +4,11 @@ import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 export default class ExerciseTable extends Component {
   state = {};
 
-  // componentDidMount() {
-  //   console.log('MOUNT', this.props.exerciseList)
-  //   if (this.props.exerciseList) {
-  //     this.setState({
-  //       ex1: this.props.chooseRandomExercise(this.props.exerciseList, 1)[0]
-  //     })
-  //   }
-  // }
-
   getDescription = exercise => (
     <Popover id="popover-trigger-click-root-close" title="Description">
       <p dangerouslySetInnerHTML={{ __html: exercise.description }} />
     </Popover>
   );
-
-  pickExercises() {
-    const ex1 = this.props.chooseRandomExercise(this.props.exerciseList, 'kneeDom', 1);
-    const ex2 = this.props.chooseRandomExercise(this.props.exerciseList, 'hipDom', 1);
-    const ex3 = this.props.chooseRandomExercise(this.props.exerciseList, 'vertPull', 1);
-    const ex4 = this.props.chooseRandomExercise(this.props.exerciseList, 'vertPush', 1);
-    this.setState(ex1, ex2, ex3, ex4);
-  }
 
   logExercises = event => {
     const exercise = event.target.id;
@@ -33,14 +16,9 @@ export default class ExerciseTable extends Component {
     const list = Object.keys(exerciseList).slice(1);
 
     if (this.props.exerciseCategory) {
-      // console.log('Hit it');
-      // console.log('THIS', this);
-
       if (this.props.day === 1 || this.props.day === 3) {
         list.splice(2, 0, list[0]);
       }
-
-      // console.log('LIST', list);
       switch (exercise) {
         case 'ex1':
           this.setState({
@@ -66,41 +44,25 @@ export default class ExerciseTable extends Component {
           console.log('No exercises');
       }
     }
-    // console.log('Ex props list', this.props.exerciseCategory)
-
-    // if (this.props.exerciseCategory){
-    //   console.log(this.props.exerciseCategory)
-    // } else {
-    //   console.log('Not happening Dog')
-    // }
   };
 
   render() {
-    // const names = this.props.choosen.map(exercise => (
-    //   <div>{exercise.name}</div>
-    // ));
     const exerciseList = this.props.exerciseCategory;
     const randomExercise = this.props.chooseRandomExercise;
-    // const { exerciseCategory, randomExercise } = this.props
-    // console.log('Exercise List in the table Yo', exerciseList);
-    // console.log(this.state);
-    // debugger;
 
-    // let [ex1, ex2, ex3, ex4] = '';
-    // let ex1;
-    //
-    // debugger;
     if (!Object.keys(this.state).length && exerciseList) {
       const exGroup = [];
-      for (const [key, value] of Object.entries(exerciseList).slice(1)) {
-        exGroup.push(key);
-      }
+      // remove day from exerciseList
+      Object.keys(exerciseList)
+        .slice(1)
+        .forEach(key => {
+          exGroup.push(key);
+        });
+
       let exercises = [];
-      // console.log('day', this.props.day);
-      // debugger;
+
       switch (this.props.day) {
         case 1:
-          console.log('IN CASE 1');
           exercises = [
             ...randomExercise(exerciseList[exGroup[0]], 2),
             ...randomExercise(exerciseList[exGroup[1]], 1),
@@ -108,7 +70,6 @@ export default class ExerciseTable extends Component {
           ];
           break;
         case 2:
-          console.log('IN CASE 2');
           exercises = [
             ...randomExercise(exerciseList[exGroup[0]], 1),
             ...randomExercise(exerciseList[exGroup[1]], 1),
@@ -117,7 +78,6 @@ export default class ExerciseTable extends Component {
           ];
           break;
         case 3:
-          console.log('IN CASE 3');
           exercises = [
             ...randomExercise(exerciseList[exGroup[0]], 2),
             ...randomExercise(exerciseList[exGroup[1]], 1),
@@ -125,7 +85,6 @@ export default class ExerciseTable extends Component {
           ];
           break;
         case 4:
-          console.log('IN CASE 4');
           exercises = [
             ...randomExercise(exerciseList[exGroup[0]], 1),
             ...randomExercise(exerciseList[exGroup[1]], 1),
@@ -134,10 +93,9 @@ export default class ExerciseTable extends Component {
           ];
           break;
         default:
-          console.log('Someting went wrong');
+          return 'Someting went wrong';
       }
-      // console.log('ex exGroup', exerciseList);
-      // console.log('WE setting state');
+
       this.setState({
         ex1: exercises[0],
         ex2: exercises[1],
@@ -145,28 +103,6 @@ export default class ExerciseTable extends Component {
         ex4: exercises[3]
       });
     }
-
-    // const logExercises = () => {
-    //   console.log('Hit it')
-    //   ex1 = this.props.chooseRandomExercise(exerciseList, 1)[0];
-    //   this.setState({ice: 'cream'})
-    //   console.log('NEW EX', ex1);
-    //
-    //   if (this.props.exerciseCategory){
-    //     console.log(this.props.exerciseCategory)
-    //   } else {
-    //     console.log('Not happening Dog')
-    //   }
-    // }
-
-    // const [ex1, ex2, ex3, ex4] = this.props.exerciseList[0];
-    // const clickCallback = () => this.getDescription(this.props.exerciseList);
-    // const { kneeDom, hipDom, vertPull, vertPush, horPull, horPush, calf } = this.props.exerciseList;
-    // const choosen = this.props.chooseRandomExercise(this.props.exerciseList, 'kneeDom', 1)
-    // const ex1 = this.props.chooseRandomExercise(this.props.exerciseList, 'kneeDom', 1)
-    // const ex2 = this.props.chooseRandomExercise(this.props.exerciseList, 'hipDom', 1)
-    // const ex3 = this.props.chooseRandomExercise(this.props.exerciseList, 'vertPull', 1)
-    // const ex4 = this.props.chooseRandomExercise(this.props.exerciseList, 'vertPush', 1)
 
     return (
       <div>
@@ -260,70 +196,3 @@ export default class ExerciseTable extends Component {
     );
   }
 }
-
-// <table className="table table-bordered table-hover">
-//   <tbody>
-//     <tr>
-//       <th className="text-center" bgcolor="#0880e2" colSpan="6">
-//         <font color="white">{'this.props.name'}</font>
-//       </th>
-//     </tr>
-//
-//     <tr>
-//       <th scope="col">Exercise</th>
-//       <th scope="col">Sets</th>
-//       <th scope="col">Reps</th>
-//       <th scope="col">Generate new Exercise</th>
-//     </tr>
-//
-//     <tr onClick={() => this.getDescription(ex1)}>
-//       <OverlayTrigger
-//         trigger="click"
-//         rootClose
-//         placement="bottom"
-//         overlay={this.getDescription(ex1)}>
-//         <td>{ex1.name}</td>
-//       </OverlayTrigger>
-//       <td>3</td>
-//       <td>8-12</td>
-//       <td>
-//         <Button>Regenerate</Button>
-//       </td>
-//     </tr>
-//
-//     <tr onClick={() => this.getDescription(ex2)}>
-//       <OverlayTrigger
-//         trigger="click"
-//         rootClose
-//         placement="bottom"
-//         overlay={this.getDescription(ex2)}>
-//         <td>{ex2.name}</td>
-//       </OverlayTrigger>
-//       <td>3</td>
-//       <td>8-12</td>
-//     </tr>
-//     <tr onClick={() => this.getDescription(ex3)}>
-//       <OverlayTrigger
-//         trigger="click"
-//         rootClose
-//         placement="bottom"
-//         overlay={this.getDescription(ex3)}>
-//         <td>{ex3.name}</td>
-//       </OverlayTrigger>
-//       <td>3</td>
-//       <td>8-12</td>
-//     </tr>
-//
-//     <tr onClick={() => this.getDescription(ex4)}>
-//       <OverlayTrigger
-//         trigger="click"
-//         rootClose
-//         placement="bottom"
-//         overlay={this.getDescription(ex4)}>
-//         <td>{ex4.name}</td>
-//       </OverlayTrigger>
-//       <td>3</td>
-//       <td>8-12</td>
-//     </tr>
-//   </tbody>
-// </table>

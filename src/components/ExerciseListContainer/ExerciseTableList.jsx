@@ -48,32 +48,10 @@ export default class ExerciseTableList extends Component {
           exerciseCategory={exerciseDay}
           chooseRandomExercise={this.props.chooseRandomExercise}
           day={exerciseDay.day}
+          key={exerciseDay.day}
         />
       );
     });
-    // const exerciseList = this.props.exerciseList;
-    // let day1;
-    //
-    // if (Object.keys(exerciseList).length) {
-    //   day1 = {
-    //     kneeDom: exerciseList.kneeDom,
-    //     hipDom: exerciseList.hipDom,
-    //     calf: exerciseList.calf
-    //   };
-    // }
-
-    // const exercises = this.props.exerciseList;
-    // if (exercises) {
-    //   const exerciseItems = this.props.exerciseList.map(exercise => (
-    //     <ExerciseTable
-    //       // name={Object.keys(exercise)}
-    //       exerciseList={Object.values(exercise)}
-    //       key={Object.values(exercise)[0][0].id}
-    //       // TODO Use uuid instead
-    //     />
-    //   ));
-    // }
-    // debugger;
     return (
       <div className="row">
         <div className="col-xs-8 col-xs-offset-2">{exerciseItems}</div>

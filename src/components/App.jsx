@@ -22,22 +22,31 @@ class App extends Component {
     // const random = this.props.chooseRandomExercise
     // const result = this.props.chooseRandomExercise(this.props.exerciseList.knee, 1);
     const exerciseList = this.props.exerciseList
-    const exercises = exerciseList.kneeDom;
+    let day1;
 
-    // const exercises = [...exerciseList.kneeDom, ...exerciseList.hipDom, exerciseList.calf]
+    if (Object.keys(exerciseList).length) {
+      day1 = {
+        kneeDom: exerciseList.kneeDom,
+        hipDom: exerciseList.hipDom,
+        calf: exerciseList.calf
+      }
+    }
 
+
+    /// const exercises = [...exerciseList.kneeDom, ...exerciseList.hipDom, ...exerciseList.calf]
+    console.log('EXERCISES', day1)
 
     // console.log(result);
     // console.log(random(state, 'kneeDom', 2));
     return (
       <div>
-        {exercises && <div>{exercises.length}</div>}
+        {/* {exercises && <div>{exercises.length}</div>} */}
       <Header />
       <div className="container">
         <SiteOverview />
         <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
         <ExerciseTable
-          exerciseCategory={exercises}
+          exerciseCategory={day1}
           chooseRandomExercise={this.props.chooseRandomExercise}
          />
         {/* <ExerciseTableList /> */}

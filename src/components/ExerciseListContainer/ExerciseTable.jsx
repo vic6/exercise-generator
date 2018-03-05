@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 export default class ExerciseTable extends Component {
-  state = { ex1: '', ex2: '' };
+  state = {}
 
   // componentDidMount() {
   //   console.log('MOUNT', this.props.exerciseList)
@@ -30,18 +30,21 @@ export default class ExerciseTable extends Component {
 
   logExercises = event => {
     const exercise = event.target.id;
+    const exerciseList = this.props.exerciseCategory;
+    const list = Object.keys(exerciseList)
+
     if (this.props.exerciseCategory) {
       console.log('Hit it');
       console.log('THIS', this);
       switch (exercise) {
         case 'ex1':
           this.setState({
-            ex1: this.props.chooseRandomExercise(this.props.exerciseCategory, 1)[0]
+            ex1: this.props.chooseRandomExercise(exerciseList[list[0]], 1)[0]
           });
           break;
         case 'ex2':
           this.setState({
-            ex2: this.props.chooseRandomExercise(this.props.exerciseCategory, 1)[0]
+            ex2: this.props.chooseRandomExercise(exerciseList[list[1]], 1)[0]
           });
           break;
         default:
@@ -62,6 +65,8 @@ export default class ExerciseTable extends Component {
     //   <div>{exercise.name}</div>
     // ));
     const exerciseList = this.props.exerciseCategory;
+    const randomExercise = this.props.chooseRandomExercise;
+    //const { exerciseCategory, randomExercise } = this.props
     console.log('Exercise List in the table Yo', exerciseList);
     console.log(this.state);
     // debugger;
@@ -69,12 +74,17 @@ export default class ExerciseTable extends Component {
     // let [ex1, ex2, ex3, ex4] = '';
     // let ex1;
     //
-    if (this.state.ex1 === '' && exerciseList) {
+    // debugger;
+    if (!Object.keys(this.state).length && exerciseList) {
+      let list = [];
+      for (const [key, value] of Object.entries(exerciseList)) {
+        list.push(key)
+      }
       console.log('ex list', exerciseList);
       console.log('WE setting state');
       this.setState({
-        ex1: this.props.chooseRandomExercise(exerciseList, 1)[0],
-        ex2: this.props.chooseRandomExercise(exerciseList, 1)[0]
+        ex1: this.props.chooseRandomExercise(exerciseList[list[0]], 1)[0],
+        ex2: this.props.chooseRandomExercise(exerciseList[list[0]], 1)[0]
       });
     }
 

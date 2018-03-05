@@ -3,46 +3,23 @@ import React, { Component } from 'react';
 import Header from './Header';
 import SiteOverview from './SiteOverview';
 import ExerciseListSelector from './ExerciseGenerator';
-import ExerciseTable from './ExerciseListContainer/ExerciseTable';
-// import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
-// import ExerciseListContainer from './ExerciseListContainer/ExerciseListContainer';
-
-// import TestComponent from './TestComponent';
+import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
 
 class App extends Component {
 
-  // componentDidMount() {
-  //   const result = this.props.chooseRandomExercise(this.props.exerciseList, 'kneeDom', 2);
-  // }
-
   render() {
-    // console.log('loop')
-
-    // const state = this.props.exerciseList;
-    // const random = this.props.chooseRandomExercise
-    // const result = this.props.chooseRandomExercise(this.props.exerciseList.knee, 1);
-    const exercises = this.props.exerciseList.kneeDom
-
-
-    // console.log(result);
-    // console.log(random(state, 'kneeDom', 2));
     return (
       <div>
-      <Header />
-      <div className="container">
-        <SiteOverview />
-        <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
-        <ExerciseTable
-          exerciseList={this.props.exerciseList}
-          chooseRandomExercise={this.props.chooseRandomExercise}
-         />
-        {/* <ExerciseTableList /> */}
-        {/* <ExerciseListContainer
-          exerciseList={this.props.exerciseList}
-          chooseRandomExercise={this.props.chooseRandomExercise}
-        /> */}
+        <Header />
+        <div className="container">
+          <SiteOverview />
+          <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
+          <ExerciseTableList
+            exerciseList={this.props.exerciseList}
+            chooseRandomExercise={this.props.chooseRandomExercise}
+          />
+        </div>
       </div>
-    </div>
     );
   }
 }

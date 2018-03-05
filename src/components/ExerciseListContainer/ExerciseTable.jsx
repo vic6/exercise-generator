@@ -30,11 +30,17 @@ export default class ExerciseTable extends Component {
   logExercises = event => {
     const exercise = event.target.id;
     const exerciseList = this.props.exerciseCategory;
-    const list = Object.keys(exerciseList);
+    let list = Object.keys(exerciseList);
 
     if (this.props.exerciseCategory) {
       console.log('Hit it');
       console.log('THIS', this);
+
+      if (this.props.day === 1 || this.props.day === 3) {
+        list.splice(2, 0, list[0]);
+      }
+
+      console.log('LIST', list);
       switch (exercise) {
         case 'ex1':
           this.setState({
@@ -53,7 +59,7 @@ export default class ExerciseTable extends Component {
           break;
         case 'ex4':
           this.setState({
-            ex4: this.props.chooseRandomExercise(exerciseList[list[4]], 1)[0]
+            ex4: this.props.chooseRandomExercise(exerciseList[list[3]], 1)[0]
           });
           break;
         default:

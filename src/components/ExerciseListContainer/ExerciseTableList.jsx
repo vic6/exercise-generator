@@ -14,7 +14,7 @@ export default class ExerciseTableList extends Component {
       };
       const day2 = {
         day: 2,
-        horPush: exerciseList.kneeDom,
+        horPush: exerciseList.horPush,
         horPull: exerciseList.horPull,
         vertPush: exerciseList.vertPush,
         vertPull: exerciseList.vertPull
@@ -27,7 +27,7 @@ export default class ExerciseTableList extends Component {
       };
       const day4 = {
         day: 4,
-        horPush: exerciseList.kneeDom,
+        horPush: exerciseList.horPush,
         horPull: exerciseList.horPull,
         vertPush: exerciseList.vertPush,
         vertPull: exerciseList.vertPull

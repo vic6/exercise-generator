@@ -50,7 +50,7 @@ class AppContainer extends Component {
   };
 
   chooseRandomExercise = (exerciseState, numberOfExercises) => {
-    console.log(exerciseState);
+    // console.log(exerciseState);
     if(Object.keys(exerciseState).length === 0) return null;
     // console.log('In rando', Object.keys(exerciseState))
     const exercises = [];
@@ -58,9 +58,9 @@ class AppContainer extends Component {
       const exercise = exerciseState[Math.floor(Math.random() * exerciseState.length)];
       if (!exercises.includes(exercise)) {
         exercises.push(exercise);
-        console.log('added new exercise', exercise)
+        // console.log('added new exercise', exercise)
       } else {
-        console.log(exercise, 'already in List')
+        // console.log(exercise, 'already in List')
       }
     }
     return exercises;
@@ -106,8 +106,8 @@ class AppContainer extends Component {
 
   render() {
     let exercises = this.state;
-    console.log(this.state);
-    console.log(exercises)
+    // console.log(this.state);
+    // console.log(exercises)
     exercises = JSON.stringify(exercises, null, 4);
 
     return (

@@ -40,7 +40,7 @@ export default class ExerciseTable extends Component {
         list.splice(2, 0, list[0]);
       }
 
-      console.log('LIST', list);
+      // console.log('LIST', list);
       switch (exercise) {
         case 'ex1':
           this.setState({
@@ -82,8 +82,8 @@ export default class ExerciseTable extends Component {
     const exerciseList = this.props.exerciseCategory;
     const randomExercise = this.props.chooseRandomExercise;
     // const { exerciseCategory, randomExercise } = this.props
-    console.log('Exercise List in the table Yo', exerciseList);
-    console.log(this.state);
+    // console.log('Exercise List in the table Yo', exerciseList);
+    // console.log(this.state);
     // debugger;
 
     // let [ex1, ex2, ex3, ex4] = '';
@@ -96,7 +96,8 @@ export default class ExerciseTable extends Component {
         exGroup.push(key);
       }
       let exercises = [];
-      console.log('day', this.props.day);
+      // console.log('day', this.props.day);
+      // debugger;
       switch (this.props.day) {
         case 1:
           console.log('IN CASE 1');
@@ -135,8 +136,8 @@ export default class ExerciseTable extends Component {
         default:
           console.log('Someting went wrong');
       }
-      console.log('ex exGroup', exerciseList);
-      console.log('WE setting state');
+      // console.log('ex exGroup', exerciseList);
+      // console.log('WE setting state');
       this.setState({
         ex1: exercises[0],
         ex2: exercises[1],

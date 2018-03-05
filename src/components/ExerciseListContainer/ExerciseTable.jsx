@@ -30,11 +30,11 @@ export default class ExerciseTable extends Component {
   logExercises = event => {
     const exercise = event.target.id;
     const exerciseList = this.props.exerciseCategory;
-    let list = Object.keys(exerciseList);
+    const list = Object.keys(exerciseList).slice(1);
 
     if (this.props.exerciseCategory) {
-      console.log('Hit it');
-      console.log('THIS', this);
+      // console.log('Hit it');
+      // console.log('THIS', this);
 
       if (this.props.day === 1 || this.props.day === 3) {
         list.splice(2, 0, list[0]);
@@ -92,7 +92,7 @@ export default class ExerciseTable extends Component {
     // debugger;
     if (!Object.keys(this.state).length && exerciseList) {
       const exGroup = [];
-      for (const [key, value] of Object.entries(exerciseList)) {
+      for (const [key, value] of Object.entries(exerciseList).slice(1)) {
         exGroup.push(key);
       }
       let exercises = [];
@@ -100,13 +100,37 @@ export default class ExerciseTable extends Component {
       switch (this.props.day) {
         case 1:
           console.log('IN CASE 1');
-          // debugger;
           exercises = [
             ...randomExercise(exerciseList[exGroup[0]], 2),
             ...randomExercise(exerciseList[exGroup[1]], 1),
             ...randomExercise(exerciseList[exGroup[2]], 1)
           ];
-
+          break;
+        case 2:
+          console.log('IN CASE 2');
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 1),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1),
+            ...randomExercise(exerciseList[exGroup[3]], 1)
+          ];
+          break;
+        case 3:
+          console.log('IN CASE 3');
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 2),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1)
+          ];
+          break;
+        case 4:
+          console.log('IN CASE 4');
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 1),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1),
+            ...randomExercise(exerciseList[exGroup[3]], 1)
+          ];
           break;
         default:
           console.log('Someting went wrong');
@@ -150,7 +174,7 @@ export default class ExerciseTable extends Component {
             <tbody>
               <tr>
                 <th className="text-center" bgcolor="#0880e2" colSpan="6">
-                  <font color="white">{'this.props.name'}</font>
+                  <font color="white">{this.props.title}</font>
                 </th>
               </tr>
 

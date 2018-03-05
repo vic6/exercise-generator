@@ -4,7 +4,7 @@ import Header from './Header';
 import SiteOverview from './SiteOverview';
 import ExerciseListSelector from './ExerciseGenerator';
 import ExerciseTable from './ExerciseListContainer/ExerciseTable';
-// import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
+import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
 // import ExerciseListContainer from './ExerciseListContainer/ExerciseListContainer';
 
 // import TestComponent from './TestComponent';
@@ -33,8 +33,8 @@ class App extends Component {
     }
 
 
-    /// const exercises = [...exerciseList.kneeDom, ...exerciseList.hipDom, ...exerciseList.calf]
-    console.log('EXERCISES', day1)
+    // const exercises = [...exerciseList.kneeDom, ...exerciseList.hipDom, ...exerciseList.calf]
+    // console.log('EXERCISES', day1)
 
     // console.log(result);
     // console.log(random(state, 'kneeDom', 2));
@@ -45,12 +45,16 @@ class App extends Component {
       <div className="container">
         <SiteOverview />
         <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
-        <ExerciseTable
+        <ExerciseTableList
+          exerciseList={this.props.exerciseList}
+          chooseRandomExercise={this.props.chooseRandomExercise}
+        />
+
+        {/* <ExerciseTable
           exerciseCategory={day1}
           chooseRandomExercise={this.props.chooseRandomExercise}
           day={1}
-         />
-        {/* <ExerciseTableList /> */}
+        /> */}
         {/* <ExerciseListContainer
           exerciseList={this.props.exerciseList}
           chooseRandomExercise={this.props.chooseRandomExercise}

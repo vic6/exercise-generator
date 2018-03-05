@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 export default class ExerciseTable extends Component {
-  state = {}
+  state = {};
 
   // componentDidMount() {
   //   console.log('MOUNT', this.props.exerciseList)
@@ -24,14 +24,13 @@ export default class ExerciseTable extends Component {
     const ex2 = this.props.chooseRandomExercise(this.props.exerciseList, 'hipDom', 1);
     const ex3 = this.props.chooseRandomExercise(this.props.exerciseList, 'vertPull', 1);
     const ex4 = this.props.chooseRandomExercise(this.props.exerciseList, 'vertPush', 1);
-    console.log('I hate this', ex1, ex2, ex3, ex4);
     this.setState(ex1, ex2, ex3, ex4);
   }
 
   logExercises = event => {
     const exercise = event.target.id;
     const exerciseList = this.props.exerciseCategory;
-    const list = Object.keys(exerciseList)
+    const list = Object.keys(exerciseList);
 
     if (this.props.exerciseCategory) {
       console.log('Hit it');
@@ -45,6 +44,16 @@ export default class ExerciseTable extends Component {
         case 'ex2':
           this.setState({
             ex2: this.props.chooseRandomExercise(exerciseList[list[1]], 1)[0]
+          });
+          break;
+        case 'ex3':
+          this.setState({
+            ex3: this.props.chooseRandomExercise(exerciseList[list[2]], 1)[0]
+          });
+          break;
+        case 'ex4':
+          this.setState({
+            ex4: this.props.chooseRandomExercise(exerciseList[list[4]], 1)[0]
           });
           break;
         default:
@@ -66,7 +75,7 @@ export default class ExerciseTable extends Component {
     // ));
     const exerciseList = this.props.exerciseCategory;
     const randomExercise = this.props.chooseRandomExercise;
-    //const { exerciseCategory, randomExercise } = this.props
+    // const { exerciseCategory, randomExercise } = this.props
     console.log('Exercise List in the table Yo', exerciseList);
     console.log(this.state);
     // debugger;
@@ -76,15 +85,33 @@ export default class ExerciseTable extends Component {
     //
     // debugger;
     if (!Object.keys(this.state).length && exerciseList) {
-      let list = [];
+      const exGroup = [];
       for (const [key, value] of Object.entries(exerciseList)) {
-        list.push(key)
+        exGroup.push(key);
       }
-      console.log('ex list', exerciseList);
+      let exercises = [];
+      console.log('day', this.props.day);
+      switch (this.props.day) {
+        case 1:
+          console.log('IN CASE 1');
+          // debugger;
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 2),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1)
+          ];
+
+          break;
+        default:
+          console.log('Someting went wrong');
+      }
+      console.log('ex exGroup', exerciseList);
       console.log('WE setting state');
       this.setState({
-        ex1: this.props.chooseRandomExercise(exerciseList[list[0]], 1)[0],
-        ex2: this.props.chooseRandomExercise(exerciseList[list[0]], 1)[0]
+        ex1: exercises[0],
+        ex2: exercises[1],
+        ex3: exercises[2],
+        ex4: exercises[3]
       });
     }
 
@@ -162,6 +189,39 @@ export default class ExerciseTable extends Component {
                 </td>
               </tr>
 
+              <tr>
+                <OverlayTrigger
+                  trigger="click"
+                  rootClose
+                  placement="bottom"
+                  overlay={this.getDescription(this.state.ex3)}>
+                  <td>{this.state.ex3.name}</td>
+                </OverlayTrigger>
+                <td>3</td>
+                <td>8-12</td>
+                <td>
+                  <Button id="ex3" onClick={this.logExercises}>
+                    Regenerate
+                  </Button>
+                </td>
+              </tr>
+
+              <tr>
+                <OverlayTrigger
+                  trigger="click"
+                  rootClose
+                  placement="bottom"
+                  overlay={this.getDescription(this.state.ex4)}>
+                  <td>{this.state.ex4.name}</td>
+                </OverlayTrigger>
+                <td>3</td>
+                <td>8-12</td>
+                <td>
+                  <Button id="ex4" onClick={this.logExercises}>
+                    Regenerate
+                  </Button>
+                </td>
+              </tr>
             </tbody>
           </table>
         )}

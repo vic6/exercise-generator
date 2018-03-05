@@ -48,6 +48,7 @@ class App extends Component {
         <ExerciseTable
           exerciseCategory={day1}
           chooseRandomExercise={this.props.chooseRandomExercise}
+          day={1}
          />
         {/* <ExerciseTableList /> */}
         {/* <ExerciseListContainer

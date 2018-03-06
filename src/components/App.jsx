@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 import Header from './Header';
 import SiteOverview from './SiteOverview';
+import ExerciseTemplate from './ExerciseTemplate';
 import ExerciseListSelector from './ExerciseGenerator';
 import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
 
@@ -13,6 +14,7 @@ class App extends Component {
         <Header />
         <div className="container">
           <SiteOverview />
+          <ExerciseTemplate />
           <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
           <ExerciseTableList
             exerciseList={this.props.exerciseList}

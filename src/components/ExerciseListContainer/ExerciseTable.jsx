@@ -128,7 +128,7 @@ export default class ExerciseTable extends Component {
                   rootClose
                   placement="bottom"
                   overlay={this.getDescription(this.state.ex1)}>
-                  <td>{this.state.ex1.name}</td>
+                  <td style={{ cursor: 'pointer' }}>{this.state.ex1.name}</td>
                 </OverlayTrigger>
                 <td>3</td>
                 <td>8-12</td>
@@ -145,7 +145,7 @@ export default class ExerciseTable extends Component {
                   rootClose
                   placement="bottom"
                   overlay={this.getDescription(this.state.ex2)}>
-                  <td>{this.state.ex2.name}</td>
+                  <td style={{ cursor: 'pointer' }}>{this.state.ex2.name}</td>
                 </OverlayTrigger>
                 <td>3</td>
                 <td>8-12</td>
@@ -162,7 +162,7 @@ export default class ExerciseTable extends Component {
                   rootClose
                   placement="bottom"
                   overlay={this.getDescription(this.state.ex3)}>
-                  <td>{this.state.ex3.name}</td>
+                  <td style={{ cursor: 'pointer' }}>{this.state.ex3.name}</td>
                 </OverlayTrigger>
                 <td>3</td>
                 <td>8-12</td>
@@ -179,7 +179,7 @@ export default class ExerciseTable extends Component {
                   rootClose
                   placement="bottom"
                   overlay={this.getDescription(this.state.ex4)}>
-                  <td>{this.state.ex4.name}</td>
+                  <td style={{ cursor: 'pointer' }}>{this.state.ex4.name}</td>
                 </OverlayTrigger>
                 <td>3</td>
                 <td>8-12</td>

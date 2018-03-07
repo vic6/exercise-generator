@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Jumbotron, Button, PageHeader, Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Jumbotron, PageHeader, Panel, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 export default class SiteOverview extends Component {
   render() {
     return (
       <div>
-        <div className='col-xs-12'>
+        <div className="col-xs-12">
           <Jumbotron>
             <h1>Ex-Gen</h1>
             <p>
@@ -13,18 +13,16 @@ export default class SiteOverview extends Component {
               of motion.
             </p>
           </Jumbotron>
-
         </div>
         <PageHeader className="text-center">The 6 Primary Movement Patterns</PageHeader>
 
-        {/* <p className='col-xs-12'>
-            Generally, we recommend compound exercises that allow you to use a lot of muscle and lift
-            heavy weights for your main lifts, regardless of your level of training experience. To
-            help with exercise selection, we’ll categorize the compound exercises further according to
-            their movement patterns: knee dominant, hip dominant, vertical push/pull, and
-            horizontal push/pull exercises. If you choose from these four, you’ll have your bases mostly
-            covered.
-          </p> */}
+        <p className="col-xs-12">
+          Generally, we recommend compound exercises that allow you to use a lot of muscle and lift
+          heavy weights for your main lifts, regardless of your level of training experience. To
+          help with exercise selection, we’ll categorize the compound exercises further according to
+          their movement patterns: knee dominant, hip dominant, vertical push/pull, and horizontal
+          push/pull exercises. If you choose from these four, you’ll have your bases mostly covered.
+        </p>
         <div className="col-xs-4">
           <Panel>
             <Panel.Heading>Knee Dominant</Panel.Heading>

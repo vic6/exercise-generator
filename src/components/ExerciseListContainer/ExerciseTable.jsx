@@ -1,79 +1,11 @@
 import React, { Component } from 'react';
-import { Popover, OverlayTrigger, Button, DropdownButton, MenuItem } from 'react-bootstrap';
+import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
 
 export default class ExerciseTable extends Component {
   state = {};
 
   componentDidMount() {
     this.regenerateDay();
-  }
-
-  regenerateDay = () => {
-    const exerciseList = this.props.exerciseCategory;
-    const randomExercise = this.props.chooseRandomExercise;
-    console.log('Keys length ', !Object.keys(this.state).length);
-    console.log(Object.keys(this.state));
-    if (exerciseList) {
-      console.log('State after clear', this.state);
-      console.log('EXERCISE LIST INSIDE', exerciseList);
-      const exGroup = [];
-      // remove day from exerciseList
-      Object.keys(exerciseList)
-        .slice(1)
-        .forEach(key => {
-          exGroup.push(key);
-        });
-
-      let exercises = [];
-
-      switch (this.props.day) {
-        case 1:
-          console.log('case 1');
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 2),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1)
-          ];
-          break;
-        case 2:
-          console.log('case2');
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 1),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1),
-            ...randomExercise(exerciseList[exGroup[3]], 1)
-          ];
-          break;
-        case 3:
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 2),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1)
-          ];
-          break;
-        case 4:
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 1),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1),
-            ...randomExercise(exerciseList[exGroup[3]], 1)
-          ];
-          break;
-        default:
-          return 'Someting went wrong';
-      }
-      console.log('bout to set state');
-      this.setState({
-        ex1: exercises[0],
-        ex2: exercises[1],
-        ex3: exercises[2],
-        ex4: exercises[3]
-      });
-    }
-  };
-
-  componentWillUnmount() {
-    this.setState({});
   }
 
   getDescription = exercise => (
@@ -83,12 +15,12 @@ export default class ExerciseTable extends Component {
   );
 
   changeExercise = event => {
-    // this.generateExercises();
     const exercise = event.target.id;
     const exerciseList = this.props.exerciseCategory;
     const list = Object.keys(exerciseList).slice(1);
 
     if (this.props.exerciseCategory) {
+      // pick two exercises for knee and hip dom days
       if (this.props.day === 1 || this.props.day === 3) {
         list.splice(2, 0, list[0]);
       }
@@ -114,8 +46,63 @@ export default class ExerciseTable extends Component {
           });
           break;
         default:
-          console.log('No exercises');
+          return 'No exercises';
       }
+    }
+  };
+
+  regenerateDay = () => {
+    const exerciseList = this.props.exerciseCategory;
+    const randomExercise = this.props.chooseRandomExercise;
+    if (exerciseList) {
+      const exGroup = [];
+      // remove day from exerciseList
+      Object.keys(exerciseList)
+        .slice(1)
+        .forEach(key => exGroup.push(key));
+
+      let exercises = [];
+
+      switch (this.props.day) {
+        case 1:
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 2),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1)
+          ];
+          break;
+        case 2:
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 1),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1),
+            ...randomExercise(exerciseList[exGroup[3]], 1)
+          ];
+          break;
+        case 3:
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 2),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1)
+          ];
+          break;
+        case 4:
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 1),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1),
+            ...randomExercise(exerciseList[exGroup[3]], 1)
+          ];
+          break;
+        default:
+          return 'Someting went wrong';
+      }
+      this.setState({
+        ex1: exercises[0],
+        ex2: exercises[1],
+        ex3: exercises[2],
+        ex4: exercises[3]
+      });
     }
   };
 

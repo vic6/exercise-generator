@@ -7,10 +7,10 @@ class AppContainer extends Component {
   state = {};
 
   componentDidMount() {
-    this.onExerciseSelect();
+    this.fetchExercises();
   }
 
-  onExerciseSelect = () => {
+  fetchExercises = () => {
     axios
       .all([
         axios.get(`https://wger.de/api/v2/exercise/?muscles=4&language=2&limit=50`), // Chest 1
@@ -67,7 +67,7 @@ class AppContainer extends Component {
   render() {
     return (
       <App
-        onExerciseSelect={this.onExerciseSelect}
+        fetchExercises={this.fetchExercises}
         exerciseList={this.state}
         chooseRandomExercise={this.chooseRandomExercise}
       />

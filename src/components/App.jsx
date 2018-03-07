@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SiteOverview from './SiteOverview';
 import ExerciseTemplate from './ExerciseTemplate';
 import GeneratorInstructions from '../GeneratorInstructions';
-import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
+import ExerciseTableListContainer from './ExerciseListContainer/ExerciseTableListContainer';
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           <SiteOverview />
           <ExerciseTemplate />
           <GeneratorInstructions />
-          <ExerciseTableList
+          <ExerciseTableListContainer
             exerciseList={this.props.exerciseList}
             chooseRandomExercise={this.props.chooseRandomExercise}
           />

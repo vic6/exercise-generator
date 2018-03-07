@@ -5,16 +5,16 @@ export default class SiteOverview extends Component {
   render() {
     return (
       <div>
-        <Jumbotron>
-          <h1>Ex-Gen</h1>
-          <p>
-            This simplie exercise utility generates randomized exercises based on the bodys planes
-            of movement.
-          </p>
-          <p>
-            <Button bsStyle="primary">Learn more</Button>
-          </p>
-        </Jumbotron>
+        <div className='col-xs-12'>
+          <Jumbotron>
+            <h1>Ex-Gen</h1>
+            <p>
+              This simplie exercise utility generates randomized exercises based on the bodys planes
+              of motion.
+            </p>
+          </Jumbotron>
+
+        </div>
         <PageHeader className="text-center">The 6 Primary Movement Patterns</PageHeader>
 
         {/* <p className='col-xs-12'>

@@ -3,19 +3,19 @@ import React, { Component } from 'react';
 import Header from './Header';
 import SiteOverview from './SiteOverview';
 import ExerciseTemplate from './ExerciseTemplate';
-import ExerciseListSelector from './ExerciseGenerator';
+import GeneratorInstructions from '../GeneratorInstructions';
 import ExerciseTableList from './ExerciseListContainer/ExerciseTableList';
+
 
 class App extends Component {
 
   render() {
     return (
       <div>
-        <Header />
         <div className="container">
           <SiteOverview />
           <ExerciseTemplate />
-          <ExerciseListSelector onExerciseSelect={this.props.onExerciseSelect} />
+          <GeneratorInstructions />
           <ExerciseTableList
             exerciseList={this.props.exerciseList}
             chooseRandomExercise={this.props.chooseRandomExercise}

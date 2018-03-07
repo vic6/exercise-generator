@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Spinner from './components/Spinner';
 import App from './components/App';
 
 class AppContainer extends Component {
@@ -9,7 +8,6 @@ class AppContainer extends Component {
 
   componentDidMount() {
     this.onExerciseSelect();
-    console.log(this.state);
   }
 
   onExerciseSelect = () => {

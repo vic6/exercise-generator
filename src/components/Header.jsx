@@ -18,21 +18,13 @@ export default class Header extends Component {
       // </nav>
 
       <Navbar>
-        <a href='/'>
-        <img src="./public/images/yoked.jpeg" alt='logo' width='60px' height='60px' />
-      </a>
+    
         <Navbar.Header>
           <Navbar.Brand>
             <a href="#home">Ex Gen</a>
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} href="#">
-            About
-          </NavItem>
-          <NavItem eventKey={2} href="#">
-            Generate Workout
-          </NavItem>
         </Nav>
       </Navbar>
 

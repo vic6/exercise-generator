@@ -1,8 +1,80 @@
 import React, { Component } from 'react';
-import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
+import { Popover, OverlayTrigger, Button, DropdownButton, MenuItem } from 'react-bootstrap';
 
 export default class ExerciseTable extends Component {
   state = {};
+
+  componentDidMount() {
+    this.regenerateDay();
+  }
+
+  regenerateDay = () => {
+    const exerciseList = this.props.exerciseCategory;
+    const randomExercise = this.props.chooseRandomExercise;
+    console.log('Keys length ', !Object.keys(this.state).length);
+    console.log(Object.keys(this.state));
+    if (exerciseList) {
+      console.log('State after clear', this.state);
+      console.log('EXERCISE LIST INSIDE', exerciseList);
+      const exGroup = [];
+      // remove day from exerciseList
+      Object.keys(exerciseList)
+        .slice(1)
+        .forEach(key => {
+          exGroup.push(key);
+        });
+
+      let exercises = [];
+
+      switch (this.props.day) {
+        case 1:
+          console.log('case 1');
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 2),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1)
+          ];
+          break;
+        case 2:
+          console.log('case2');
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 1),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1),
+            ...randomExercise(exerciseList[exGroup[3]], 1)
+          ];
+          break;
+        case 3:
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 2),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1)
+          ];
+          break;
+        case 4:
+          exercises = [
+            ...randomExercise(exerciseList[exGroup[0]], 1),
+            ...randomExercise(exerciseList[exGroup[1]], 1),
+            ...randomExercise(exerciseList[exGroup[2]], 1),
+            ...randomExercise(exerciseList[exGroup[3]], 1)
+          ];
+          break;
+        default:
+          return 'Someting went wrong';
+      }
+      console.log('bout to set state');
+      this.setState({
+        ex1: exercises[0],
+        ex2: exercises[1],
+        ex3: exercises[2],
+        ex4: exercises[3]
+      });
+    }
+  };
+
+  componentWillUnmount() {
+    this.setState({});
+  }
 
   getDescription = exercise => (
     <Popover id="popover-trigger-click-root-close" title="Description">
@@ -10,7 +82,8 @@ export default class ExerciseTable extends Component {
     </Popover>
   );
 
-  logExercises = event => {
+  changeExercise = event => {
+    // this.generateExercises();
     const exercise = event.target.id;
     const exerciseList = this.props.exerciseCategory;
     const list = Object.keys(exerciseList).slice(1);
@@ -47,70 +120,17 @@ export default class ExerciseTable extends Component {
   };
 
   render() {
-    const exerciseList = this.props.exerciseCategory;
-    const randomExercise = this.props.chooseRandomExercise;
-
-    if (!Object.keys(this.state).length && exerciseList) {
-      const exGroup = [];
-      // remove day from exerciseList
-      Object.keys(exerciseList)
-        .slice(1)
-        .forEach(key => {
-          exGroup.push(key);
-        });
-
-      let exercises = [];
-
-      switch (this.props.day) {
-        case 1:
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 2),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1)
-          ];
-          break;
-        case 2:
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 1),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1),
-            ...randomExercise(exerciseList[exGroup[3]], 1)
-          ];
-          break;
-        case 3:
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 2),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1)
-          ];
-          break;
-        case 4:
-          exercises = [
-            ...randomExercise(exerciseList[exGroup[0]], 1),
-            ...randomExercise(exerciseList[exGroup[1]], 1),
-            ...randomExercise(exerciseList[exGroup[2]], 1),
-            ...randomExercise(exerciseList[exGroup[3]], 1)
-          ];
-          break;
-        default:
-          return 'Someting went wrong';
-      }
-
-      this.setState({
-        ex1: exercises[0],
-        ex2: exercises[1],
-        ex3: exercises[2],
-        ex4: exercises[3]
-      });
-    }
-
     return (
       <div>
         {this.state.ex1 && (
           <table className="table table-bordered table-hover">
             <tbody>
-              <tr>
-                <th className="text-center" bgcolor="#0880e2" colSpan="6">
+              <tr style={{ cursor: 'pointer' }}>
+                <th
+                  onClick={this.regenerateDay}
+                  className="text-center"
+                  bgcolor="#0880e2"
+                  colSpan="6">
                   <font color="white">{this.props.title}</font>
                 </th>
               </tr>
@@ -133,7 +153,7 @@ export default class ExerciseTable extends Component {
                 <td>3</td>
                 <td>8-12</td>
                 <td>
-                  <Button id="ex1" onClick={this.logExercises}>
+                  <Button id="ex1" onClick={this.changeExercise}>
                     Regenerate
                   </Button>
                 </td>
@@ -150,7 +170,7 @@ export default class ExerciseTable extends Component {
                 <td>3</td>
                 <td>8-12</td>
                 <td>
-                  <Button id="ex2" onClick={this.logExercises}>
+                  <Button id="ex2" onClick={this.changeExercise}>
                     Regenerate
                   </Button>
                 </td>
@@ -167,7 +187,7 @@ export default class ExerciseTable extends Component {
                 <td>3</td>
                 <td>8-12</td>
                 <td>
-                  <Button id="ex3" onClick={this.logExercises}>
+                  <Button id="ex3" onClick={this.changeExercise}>
                     Regenerate
                   </Button>
                 </td>
@@ -184,7 +204,7 @@ export default class ExerciseTable extends Component {
                 <td>3</td>
                 <td>8-12</td>
                 <td>
-                  <Button id="ex4" onClick={this.logExercises}>
+                  <Button id="ex4" onClick={this.changeExercise}>
                     Regenerate
                   </Button>
                 </td>

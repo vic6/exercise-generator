@@ -6,7 +6,7 @@ import ExerciseTableListContainer from './ExerciseListContainer/ExerciseTableLis
 
 const App = ({exerciseList, chooseRandomExercise}) => (
   <div>
-    <div className="container">
+    <div className="container" style={{paddingBottom:120}}>
       <SiteOverview />
       <ExerciseTemplate />
       <GeneratorInstructions />

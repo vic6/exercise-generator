@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ExerciseTable from './ExerciseTable';
 import ExerciseTableList from './ExerciseTableList';
 
 export default class ExerciseTableListContainer extends Component {

@@ -4,9 +4,9 @@ import ExerciseTableContainer from './ExerciseTableContainer'
 const ExerciseTableList = ({ createDaysWorkout, chooseRandomExercise }) => {
   const tableTitles = [
     null,
-    'Day 1 - Knee Dominant',
+    'Day 1 - Lower Body',
     'Day 2 - Upper Body',
-    'Day 3 - Hip Dominant',
+    'Day 3 - Lower Body',
     'Day 4 - Upper Body'
   ];
   const exerciseDays = createDaysWorkout();

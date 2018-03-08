@@ -56,9 +56,6 @@ class AppContainer extends Component {
       const exercise = exerciseState[Math.floor(Math.random() * exerciseState.length)];
       if (!exercises.includes(exercise)) {
         exercises.push(exercise);
-        // console.log('added new exercise', exercise)
-      } else {
-        // console.log(exercise, 'already in List')
       }
     }
     return exercises;

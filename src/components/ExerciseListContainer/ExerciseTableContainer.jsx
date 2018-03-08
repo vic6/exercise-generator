@@ -58,7 +58,7 @@ export default class ExerciseTableContainer extends Component {
     const randomExercise = this.props.chooseRandomExercise;
     if (exerciseList) {
       const exGroup = [];
-      // remove day from exerciseList
+      // remove day key/value from exerciseList
       Object.keys(exerciseList)
         .slice(1)
         .forEach(key => exGroup.push(key));

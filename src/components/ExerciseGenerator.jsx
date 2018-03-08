@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-// import ExerciseTable from './ExerciseListContainer/ExerciseTable';
 
 export default class ExerciseGenerator extends Component {
   render() {
@@ -14,5 +13,5 @@ export default class ExerciseGenerator extends Component {
       </div>
     );
   }
-  
+
 }

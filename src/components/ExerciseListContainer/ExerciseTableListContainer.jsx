@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import ExerciseTable from './ExerciseTable';
 import ExerciseTableList from './ExerciseTableList';
 
 export default class ExerciseTableListContainer extends Component {
@@ -41,6 +42,7 @@ export default class ExerciseTableListContainer extends Component {
   };
 
   render() {
+
     return (
       <ExerciseTableList
         exerciseList={this.props.exerciseList}

@@ -1,5 +1,6 @@
 import React from 'react';
-import ExerciseTable from './ExerciseTable';
+// import ExerciseTable from './ExerciseTable';
+import ExerciseTableContainer from './ExerciseTableContainer'
 
 const ExerciseTableList = ({ createDaysWorkout, chooseRandomExercise }) => {
   const tableTitles = [
@@ -11,7 +12,7 @@ const ExerciseTableList = ({ createDaysWorkout, chooseRandomExercise }) => {
   ];
   const exerciseDays = createDaysWorkout();
   const exerciseItems = exerciseDays.map(exerciseDay => (
-    <ExerciseTable
+    <ExerciseTableContainer
       title={tableTitles[exerciseDay.day]}
       exerciseCategory={exerciseDay}
       chooseRandomExercise={chooseRandomExercise}

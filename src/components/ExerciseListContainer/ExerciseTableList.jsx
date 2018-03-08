@@ -1,5 +1,4 @@
 import React from 'react';
-// import ExerciseTable from './ExerciseTable';
 import ExerciseTableContainer from './ExerciseTableContainer'
 
 const ExerciseTableList = ({ createDaysWorkout, chooseRandomExercise }) => {

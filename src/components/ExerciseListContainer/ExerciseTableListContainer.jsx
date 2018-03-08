@@ -8,7 +8,6 @@ export default class ExerciseTableListContainer extends Component {
   createDaysWorkout = () => {
     let exerciseDays = [];
     const { exerciseList } = this.props;
-    console.log(this.props)
     if (Object.keys(this.props.exerciseList).length) {
       const day1 = {
         day: 1,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Popover, OverlayTrigger, Button } from 'react-bootstrap';
+import { Popover } from 'react-bootstrap';
 import ExerciseTable from './ExerciseTable';
 
 export default class ExerciseTableContainer extends Component {
@@ -50,6 +50,7 @@ export default class ExerciseTableContainer extends Component {
           return 'No exercises';
       }
     }
+    return null;
   };
 
   regenerateDay = () => {
@@ -105,6 +106,7 @@ export default class ExerciseTableContainer extends Component {
         ex4: exercises[3]
       });
     }
+    return null;
   };
 
   render() {
@@ -116,98 +118,6 @@ export default class ExerciseTableContainer extends Component {
         getDescription={this.getDescription}
         changeExercise={this.changeExercise}
       />
-      // <div>
-      //   {this.state.ex1 && (
-      //     <table className="table table-bordered table-hover">
-      //       <tbody>
-      //         <tr style={{ cursor: 'pointer' }}>
-      //           <th
-      //             onClick={this.regenerateDay}
-      //             className="text-center"
-      //             bgcolor="#0880e2"
-      //             colSpan="6">
-      //             <font color="white">{this.props.title}</font>
-      //           </th>
-      //         </tr>
-      //
-      //         <tr>
-      //           <th scope="col">Exercise</th>
-      //           <th scope="col">Sets</th>
-      //           <th scope="col">Reps</th>
-      //           <th scope="col">Generate new Exercise</th>
-      //         </tr>
-      //
-      //         <tr>
-      //           <OverlayTrigger
-      //             trigger="click"
-      //             rootClose
-      //             placement="bottom"
-      //             overlay={this.getDescription(this.state.ex1)}>
-      //             <td style={{ cursor: 'pointer' }}>{this.state.ex1.name}</td>
-      //           </OverlayTrigger>
-      //           <td>3</td>
-      //           <td>8-12</td>
-      //           <td>
-      //             <Button id="ex1" onClick={this.changeExercise}>
-      //               Regenerate
-      //             </Button>
-      //           </td>
-      //         </tr>
-      //
-      //         <tr>
-      //           <OverlayTrigger
-      //             trigger="click"
-      //             rootClose
-      //             placement="bottom"
-      //             overlay={this.getDescription(this.state.ex2)}>
-      //             <td style={{ cursor: 'pointer' }}>{this.state.ex2.name}</td>
-      //           </OverlayTrigger>
-      //           <td>3</td>
-      //           <td>8-12</td>
-      //           <td>
-      //             <Button id="ex2" onClick={this.changeExercise}>
-      //               Regenerate
-      //             </Button>
-      //           </td>
-      //         </tr>
-      //
-      //         <tr>
-      //           <OverlayTrigger
-      //             trigger="click"
-      //             rootClose
-      //             placement="bottom"
-      //             overlay={this.getDescription(this.state.ex3)}>
-      //             <td style={{ cursor: 'pointer' }}>{this.state.ex3.name}</td>
-      //           </OverlayTrigger>
-      //           <td>3</td>
-      //           <td>8-12</td>
-      //           <td>
-      //             <Button id="ex3" onClick={this.changeExercise}>
-      //               Regenerate
-      //             </Button>
-      //           </td>
-      //         </tr>
-      //
-      //         <tr>
-      //           <OverlayTrigger
-      //             trigger="click"
-      //             rootClose
-      //             placement="bottom"
-      //             overlay={this.getDescription(this.state.ex4)}>
-      //             <td style={{ cursor: 'pointer' }}>{this.state.ex4.name}</td>
-      //           </OverlayTrigger>
-      //           <td>3</td>
-      //           <td>8-12</td>
-      //           <td>
-      //             <Button id="ex4" onClick={this.changeExercise}>
-      //               Regenerate
-      //             </Button>
-      //           </td>
-      //         </tr>
-      //       </tbody>
-      //     </table>
-      //   )}
-      // </div>
     );
   }
 }

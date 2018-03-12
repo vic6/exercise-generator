@@ -17,7 +17,6 @@ const ExerciseTableList = ({ createDaysWorkout, chooseRandomExercise }) => {
       chooseRandomExercise={chooseRandomExercise}
       day={exerciseDay.day}
       key={exerciseDay.day}
-      id={Math.floor(Math.random() * 1000)}
     />
   ));
   return (

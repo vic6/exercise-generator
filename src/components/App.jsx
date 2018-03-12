@@ -1,7 +1,7 @@
 import React from 'react';
 import SiteOverview from './SiteOverview';
 import ExerciseTemplate from './ExerciseTemplate';
-import GeneratorInstructions from '../GeneratorInstructions';
+import GeneratorInstructions from './GeneratorInstructions';
 import ExerciseTableListContainer from './ExerciseListContainer/ExerciseTableListContainer';
 
 const App = ({exerciseList, chooseRandomExercise}) => (
